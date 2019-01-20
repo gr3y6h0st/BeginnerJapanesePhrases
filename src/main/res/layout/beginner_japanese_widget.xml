@@ -1,0 +1,28 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/widget_translator"
+    android:background="@color/cardview_light_background"
+    android:padding="@dimen/widget_margin">
+
+    <ImageButton
+        android:id="@+id/widget_translator_search_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="8dp"
+        android:src="@android:drawable/ic_menu_search"
+        android:contentDescription="@string/Translator_Search_Icon" />
+
+    <TextView
+        android:id="@+id/widget_translator_search_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginStart="8dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/widget_translator_search_icon"
+        android:text="@string/search_translate_hint"/>
+
+</RelativeLayout>

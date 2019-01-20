@@ -1,0 +1,787 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="phrase_topic_labels">
+        <item>Greetings</item>
+        <item>Common</item>
+        <item>Numbers</item>
+        <item>Emergency</item>
+        <item>Shopping</item>
+        <item>Eating</item>
+        <item>Accommodation</item>
+        <item>Weather</item>
+        <item>Places</item>
+        <item>Transportation</item>
+        <item>Time</item>
+        <item>Colors</item>
+    </string-array>
+
+    <string-array name="greetings_phrases">
+        <item>Hello</item>
+        <item>My name is…</item>
+        <item>Nice to meet you.</item>
+        <item>How are you?</item>
+        <item>I am fine.</item>
+        <item>Goodbye!</item>
+        <item>See you later!</item>
+        <item>See you tomorrow!</item>
+        <item>Take care.</item>
+        <item>Good Morning!</item>
+        <item>Good Afternoon!</item>
+        <item>Good Evening!</item>
+        <item>Happy birthday!</item>
+    </string-array>
+
+    <string-array name="greetings_phrases_romaji">
+        <item>Konichiwa</item>
+        <item>Watashi wa…</item>
+        <item>Hajimemashite.</item>
+        <item>Ogenki desu ka?</item>
+        <item>Genki desu.</item>
+        <item>Sayoonara!</item>
+        <item>Mata aimashoo!</item>
+        <item>Mata aimashou!</item>
+        <item>Kiwotsukete.</item>
+        <item>Ohayoo gozaimasu!</item>
+        <item>Konnichiwa!</item>
+        <item>Konbanwa!</item>
+        <item>Tanjoobi omedetoo gozaimasu!</item>
+    </string-array>
+
+    <string-array name="common_phrases">
+        <item>Yes</item>
+        <item>No</item>
+        <item>Thank you.</item>
+        <item>Please</item>
+        <item>Excuse Me</item>
+        <item>Sorry</item>
+        <item>I do not know.</item>
+        <item>One Moment.</item>
+        <item>You are welcome.</item>
+        <item>What? </item>
+        <item>When?</item>
+        <item>Which?</item>
+        <item>Why?</item>
+        <item>Who?</item>
+        <item>Where?</item>
+        <item>How much?</item>
+        <item>How many?</item>
+    </string-array>
+
+    <string-array name="common_phrases_romaji">
+        <item>Hai</item>
+        <item>iie</item>
+        <item>Arigatou.</item>
+        <item>Douzo</item>
+        <item>Sumimasen</item>
+        <item>Gomennasai</item>
+        <item>Wakarimasen.</item>
+        <item>Syousyou omachikudasaimase.</item>
+        <item>Dou itashimashite.</item>
+        <item>Nan desu ka?</item>
+        <item>Itsu desu ka?</item>
+        <item>Dochira desu ka?</item>
+        <item>Naze desu ka?</item>
+        <item>Daredesuka?</item>
+        <item>Doko desu ka?</item>
+        <item>Donokurai desu ka?</item>
+        <item>Ikutsu desu ka?</item>
+    </string-array>
+
+    <string-array name="numbers_phrases">
+        <item>zero</item>
+        <item>one</item>
+        <item>two</item>
+        <item>three</item>
+        <item>four</item>
+        <item>five</item>
+        <item>six</item>
+        <item>seven</item>
+        <item>eight</item>
+        <item>nine</item>
+        <item>ten</item>
+        <item>eleven</item>
+        <item>twelve</item>
+        <item>thirteen</item>
+        <item>fourteen</item>
+        <item>fifteen</item>
+        <item>sixteen</item>
+        <item>seventeen</item>
+        <item>eighteen</item>
+        <item>nineteen</item>
+        <item>twenty</item>
+        <item>twenty-one</item>
+        <item>twenty-two</item>
+        <item>twenty-three</item>
+        <item>twenty-four</item>
+        <item>twenty-five</item>
+        <item>twenty-six</item>
+        <item>twenty-seven</item>
+        <item>twenty-eight</item>
+        <item>twenty-nine</item>
+        <item>thirty</item>
+        <item>hundred</item>
+        <item>thousand</item>
+        <item>ten-thousand</item>
+        <item>hundred-thousand</item>
+        <item>million</item>
+        <item>billion</item>
+    </string-array>
+
+    <string-array name="numbers_phrases_romaji">
+        <item>ree</item>
+        <item>ichi</item>
+        <item>ni</item>
+        <item>san</item>
+        <item>shi</item>
+        <item>go</item>
+        <item>roku</item>
+        <item>nana</item>
+        <item>hachi</item>
+        <item>kyu</item>
+        <item>jyu</item>
+        <item>jyu ichi</item>
+        <item>jyu ni</item>
+        <item>jyu san</item>
+        <item>jyu yon</item>
+        <item>jyu go</item>
+        <item>jyu roku</item>
+        <item>jyu nana</item>
+        <item>jyu hachi</item>
+        <item>jyu kyu</item>
+        <item>ni jyu</item>
+        <item>ni jyu ichi</item>
+        <item>ni jyu ni</item>
+        <item>ni jyu san</item>
+        <item>ni jyu yon</item>
+        <item>ni jyu go</item>
+        <item>ni jyu roku</item>
+        <item>ni jyu nana</item>
+        <item>ni jyu hachi</item>
+        <item>ni jyu kyu</item>
+        <item>san jyu</item>
+        <item>hyaku</item>
+        <item>sen</item>
+        <item>man</item>
+        <item>jyu man</item>
+        <item>hyaku man</item>
+        <item>jyu oku</item>
+    </string-array>
+
+    <string-array name="emergency_phrases">
+        <item>Help!</item>
+        <item>Fire!</item>
+        <item>Thief!</item>
+        <item>Stop!</item>
+        <item>Go away!</item>
+        <item>Watch out!</item>
+        <item>Are you okay?</item>
+        <item>Call an ambulance.</item>
+        <item>Call a Doctor!</item>
+        <item>Call the Police!</item>
+        <item>I am lost.</item>
+        <item>I have lost my bag.</item>
+        <item>I have lost my passport.</item>
+        <item>I have been robbed.</item>
+        <item>Can you help me?</item>
+    </string-array>
+
+    <string-array name="emergency_phrases_romaji">
+        <item>Tasukete!</item>
+        <item>Kaji da!</item>
+        <item>Dorobou!</item>
+        <item>Tomare!</item>
+        <item>Hanarero!</item>
+        <item>Kiwotsuketekudasai!</item>
+        <item>Daizyoubudeska?</item>
+        <item>Kyukyusha o yonde kudasai.</item>
+        <item>Isha o yondekudasai!</item>
+        <item>Keisatsuo yondekudasai!</item>
+        <item>Michini mayoimashita.</item>
+        <item>Baggu o nakushimashita.</item>
+        <item>Pasupouto o nakushimashita.</item>
+        <item>Surini aimashita.</item>
+        <item>Tasukete kuremasenka?</item>
+    </string-array>
+
+    <string-array name="shopping_phrases_vocab">
+        <item>Buy</item>
+        <item>Sell</item>
+        <item>Price</item>
+        <item>Discount</item>
+        <item>Diamond</item>
+        <item>Towel</item>
+        <item>Lipstick</item>
+        <item>Bag</item>
+        <item>Handbag</item>
+        <item>Wallet</item>
+        <item>Camera</item>
+        <item>Gift</item>
+        <item>Watch</item>
+        <item>Mobile Phone</item>
+        <item>Computer</item>
+        <item>Belt</item>
+        <item>Bikini</item>
+        <item>Boot</item>
+        <item>Bra</item>
+        <item>Bracelet</item>
+        <item>Coat</item>
+        <item>Earrings</item>
+        <item>Glasses</item>
+        <item>High-Heel</item>
+        <item>Jacket</item>
+        <item>Jeans</item>
+        <item>Pants</item>
+        <item>Leather Shoes</item>
+        <item>Miniskirt</item>
+        <item>Skirt</item>
+        <item>Socks</item>
+        <item>Sunglasses</item>
+        <item>Tie</item>
+        <item>Underwear</item>
+        <item>Clothing</item>
+    </string-array>
+
+    <string-array name="shopping_phrases_vocab_romaji">
+        <item>kau</item>
+        <item>uru</item>
+        <item>nedan</item>
+        <item>waribiki</item>
+        <item>daiamondo</item>
+        <item>taoru</item>
+        <item>rippu</item>
+        <item>kaban</item>
+        <item>kandobaggu</item>
+        <item>saifu</item>
+        <item>kamera</item>
+        <item>purezento</item>
+        <item>tokei</item>
+        <item>keitaidennwa</item>
+        <item>pasokon</item>
+        <item>beruto</item>
+        <item>bikini</item>
+        <item>buutu</item>
+        <item>burazyaa</item>
+        <item>buresuretto</item>
+        <item>koooto</item>
+        <item>iyanringu</item>
+        <item>megane</item>
+        <item>haihiiru</item>
+        <item>zyaketto</item>
+        <item>zinnzu</item>
+        <item>zubonn</item>
+        <item>kawagutsu</item>
+        <item>miniskaato</item>
+        <item>sukaato</item>
+        <item>kutushita</item>
+        <item>sangurasu</item>
+        <item>nekutai</item>
+        <item>shitakgi</item>
+        <item>youfuku</item>
+    </string-array>
+
+    <string-array name="shopping_phrases">
+        <item>Where is the shopping area?</item>
+        <item>uru</item>
+        <item>nedan</item>
+        <item>waribiki</item>
+        <item>daiamondo</item>
+        <item>taoru</item>
+        <item>rippu</item>
+        <item>kaban</item>
+        <item>kandobaggu</item>
+        <item>saifu</item>
+        <item>kamera</item>
+        <item>purezento</item>
+        <item>tokei</item>
+        <item>keitaidennwa</item>
+        <item>pasokon</item>
+        <item>beruto</item>
+        <item>bikini</item>
+        <item>buutu</item>
+        <item>burazyaa</item>
+        <item>buresuretto</item>
+        <item>koooto</item>
+        <item>iyanringu</item>
+        <item>megane</item>
+        <item>haihiiru</item>
+        <item>zyaketto</item>
+        <item>zinnzu</item>
+        <item>zubonn</item>
+        <item>kawagutsu</item>
+        <item>miniskaato</item>
+        <item>sukaato</item>
+        <item>kutushita</item>
+        <item>sangurasu</item>
+        <item>nekutai</item>
+        <item>shitakgi</item>
+        <item>youfuku</item>
+    </string-array>
+
+    <string-array name="shopping_phrases_romaji">
+        <item>Where is the shopping area?</item>
+        <item>uru</item>
+        <item>nedan</item>
+        <item>waribiki</item>
+        <item>daiamondo</item>
+        <item>taoru</item>
+        <item>rippu</item>
+        <item>kaban</item>
+        <item>kandobaggu</item>
+        <item>saifu</item>
+        <item>kamera</item>
+        <item>purezento</item>
+        <item>tokei</item>
+        <item>keitaidennwa</item>
+        <item>pasokon</item>
+        <item>beruto</item>
+        <item>bikini</item>
+        <item>buutu</item>
+        <item>burazyaa</item>
+        <item>buresuretto</item>
+        <item>koooto</item>
+        <item>iyanringu</item>
+        <item>megane</item>
+        <item>haihiiru</item>
+        <item>zyaketto</item>
+        <item>zinnzu</item>
+        <item>zubonn</item>
+        <item>kawagutsu</item>
+        <item>miniskaato</item>
+        <item>sukaato</item>
+        <item>kutushita</item>
+        <item>sangurasu</item>
+        <item>nekutai</item>
+        <item>shitakgi</item>
+        <item>youfuku</item>
+    </string-array>
+
+    <string-array name="eating_phrases">
+        <item>What is this?</item>
+        <item>May I have a glass of water?</item>
+        <item>Enjoy your meal! </item>
+        <item>Bill please! </item>
+        <item>I am allergic to …</item>
+        <item>dairy products</item>
+        <item>honey</item>
+        <item>nuts</item>
+        <item>seafood</item>
+        <item>breakfast</item>
+        <item>lunch</item>
+        <item>dinner</item>
+        <item>salad</item>
+        <item>menu </item>
+        <item>rice</item>
+
+    </string-array>
+
+    <string-array name="eating_phrases_romaji">
+        <item>Kore wa nan desu ka?</item>
+        <item>Omizuwo kudasai.</item>
+        <item>Doozo go yukkuri!</item>
+        <item>Okanjo wo onegaishimasu. </item>
+        <item>Watashi wa … ni arerugii ga arimasu.</item>
+        <item>nyuuseihin</item>
+        <item>hachimitsu</item>
+        <item>nattsurui</item>
+        <item>shiifuudo</item>
+        <item>chou shoku</item>
+        <item>chuu shoku</item>
+        <item>yuu shoku</item>
+        <item>sarada</item>
+        <item>menrui</item>
+        <item>gohan</item>
+    </string-array>
+
+    <string-array name="accommodation_phrases">
+        <item>I have a reservation.</item>
+        <item>Do you have any rooms available?</item>
+        <item>Do you have a single room?</item>
+        <item>Do you have a double room?</item>
+        <item>May I see the room first?</item>
+        <item>I need an extra bed.</item>
+        <item>I will stay for … nights</item>
+        <item>Does the hotel have internet service?</item>
+        <item>Is breakfast included?</item>
+        <item>What time is breakfast served?</item>
+        <item>Do you have a safe?</item>
+        <item>I have locked myself out of my room.</item>
+        <item>The air conditioner doesn't work well.</item>
+        <item>What time is checkout?</item>
+        <item>Can I leave my bags here?</item>
+        <item>hotel</item>
+        <item>hostel</item>
+        <item>youth hostel</item>
+        <item>bed and breakfast</item>
+        <item>bath towel</item>
+        <item>bathroom</item>
+        <item>bed</item>
+        <item>elevator</item>
+        <item>fire door</item>
+        <item>hair dryer</item>
+        <item>key</item>
+        <item>laundry</item>
+        <item>mirror</item>
+        <item>shampoo</item>
+        <item>soap</item>
+        <item>swimming pool</item>
+        <item>television</item>
+        <item>tissue</item>
+        <item>toilet</item>
+        <item>toilet paper</item>
+        <item>toothbrush</item>
+        <item>toothpaste</item>
+        <item>towel</item>
+    </string-array>
+
+    <string-array name="accommodation_phrases_romaji">
+        <item>yoyaku shite arimasu.</item>
+        <item>suiteru heya arimasu ka?</item>
+        <item>shinguru rumu wa arimasu ka?</item>
+        <item>daburu rumu wa arimasu ka?</item>
+        <item>heyawo saisyoni mitemo iidesuka?</item>
+        <item>mou tsu beddo ga hituyounanodesuga.</item>
+        <item>…ban tomarimasu.</item>
+        <item>hoteru ni intaanettosaabisu wa arimasu ka?</item>
+        <item>chousyokuha fukumareteimasuka?</item>
+        <item>chousyokuha nazikaradesuka?</item>
+        <item>kinko arimasu ka?</item>
+        <item>watashinoheya, rokkugakakatteshimaimashita.</item>
+        <item>eakonnga umaku ugokkimasen.</item>
+        <item>chekkuauto wa itsudesuka?</item>
+        <item>koko ni watashi no kaban o oitoite moraemasu ka?</item>
+        <item>hoteru</item>
+        <item>hosuteru</item>
+        <item>yusuhosuteru</item>
+        <item>beddo to choushoku</item>
+        <item>basutaoru</item>
+        <item>furoba</item>
+        <item>beddo</item>
+        <item>erebetaa</item>
+        <item>bouka tobira</item>
+        <item>doraiyaa</item>
+        <item>kagi</item>
+        <item>sentaku shitsu</item>
+        <item>kagami</item>
+        <item>syanpuu</item>
+        <item>sekken</item>
+        <item>puru</item>
+        <item>terebi</item>
+        <item>thissyu</item>
+        <item>toire</item>
+        <item>toirettopeepaa</item>
+        <item>haburashi</item>
+        <item>hamigakiko</item>
+        <item>taoru</item>
+    </string-array>
+
+    <string-array name="weather_phrases">
+        <item>What is the weather forecast?</item>
+        <item>What is today"'s" temperature?</item>
+        <item>It is … degree Celsius.</item>
+        <item>Did you bring the umbrella?</item>
+        <item>What is the weather like?</item>
+        <item>It is hot.</item>
+        <item>It is warm.</item>
+        <item>It is cold.</item>
+        <item>It is foggy.</item>
+        <item>It is humid.</item>
+        <item>It is overcast.</item>
+        <item>It is rainy.</item>
+        <item>It is snowy.</item>
+        <item>It is sunny.</item>
+        <item>It is windy.</item>
+        <item>It is comfortable.</item>
+        <item>The wind is strong.</item>
+    </string-array>
+
+    <string-array name="weather_phrases_romaji">
+        <item>Tenkeyoho wa do natte imasu ka?</item>
+        <item>Kyouha nandodesuka?</item>
+        <item>Sessi…dodesu.</item>
+        <item>Kasawo motteimasuka</item>
+        <item>Tenki wa dodesu ka?</item>
+        <item>atsuidesu.</item>
+        <item>atatakaidesu.</item>
+        <item>samuidesu.</item>
+        <item>kiridesu.</item>
+        <item>mushiteimasu.</item>
+        <item>kumoridesu.</item>
+        <item>amedesu.</item>
+        <item>yuki ga futtemasu.</item>
+        <item>haredesu.</item>
+        <item>kaze ga tsuyoidesu.</item>
+        <item>kaiteki desu.</item>
+        <item>kaze ga tsuyoidesu.</item>
+    </string-array>
+
+    <string-array name="places_phrases">
+        <item>Where"'s" …?</item>
+        <item>Where"'s" the nearest …?</item>
+        <item>I"'m" looking for …</item>
+        <item>bank</item>
+        <item>beach</item>
+        <item>bridge</item>
+        <item>cafe</item>
+        <item>church</item>
+        <item>cinema</item>
+        <item>department store</item>
+        <item>hospital</item>
+        <item>hotel</item>
+        <item>hostel</item>
+        <item>youth hostel</item>
+        <item>market</item>
+        <item>supermarket</item>
+        <item>museum</item>
+        <item>park</item>
+        <item>post office</item>
+        <item>restaurant</item>
+        <item>school</item>
+        <item>shopping mall</item>
+        <item>toilet</item>
+        <item>police office</item>
+        <item>university</item>
+        <item>zoo</item>
+        <item>airport</item>
+        <item>bus stop</item>
+        <item>subway</item>
+        <item>taxi stand</item>
+        <item>train station</item>
+        <item>place</item>
+        <item>pier</item>
+    </string-array>
+
+    <string-array name="places_phrases_romaji">
+        <item>… wa dokodesu ka?</item>
+        <item>ichiban chikai … wa dokodesu ka?</item>
+        <item>watashi wa … o sagashiteimasu</item>
+        <item>ginkou</item>
+        <item>kaigan</item>
+        <item>hashi</item>
+        <item>kafe</item>
+        <item>kyoukai</item>
+        <item>eigakan</item>
+        <item>depaato</item>
+        <item>byouin</item>
+        <item>hoteru</item>
+        <item>hosuteru</item>
+        <item>yusuhosuteru</item>
+        <item>maaketto</item>
+        <item>supa</item>
+        <item>hakubutsukan</item>
+        <item>kouen</item>
+        <item>yuubinkyoku</item>
+        <item>resutoran</item>
+        <item>gakkou</item>
+        <item>syoppingumooru</item>
+        <item>toire</item>
+        <item>keisatsusho</item>
+        <item>daigaku</item>
+        <item>doubutsuen</item>
+        <item>kuukou</item>
+        <item>basutei</item>
+        <item>chikadou</item>
+        <item>takushii chuushajou</item>
+        <item>densha no eki</item>
+        <item>basho</item>
+        <item>futo</item>
+
+    </string-array>
+
+    <string-array name="transportation_phrases">
+        <item>Where can I buy tickets?</item>
+        <item>Do I need to buy a ticket first?</item>
+        <item>How much is a ticket to …?</item>
+        <item>One-way or round-trip?</item>
+        <item>One ticket to …, please.</item>
+        <item>Is there a discount for children?</item>
+        <item>How long will it take?</item>
+        <item>Is there a bus to …?</item>
+        <item>When is the first bus?</item>
+        <item>When is the last bus?</item>
+        <item>When is the next bus?</item>
+        <item>When does the train come?</item>
+        <item>Can you send me a taxi?</item>
+        <item>Please take me to this address?</item>
+        <item>Does it stop at …? </item>
+        <item>Please take me to the airport.</item>
+        <item>What time do you start check-in?</item>
+        <item>When can I board the plane?</item>
+        <item>Where is the bording gate?</item>
+        <item>Can you give me a window seat?</item>
+        <item>Can we be there on time?</item>
+        <item>When shall we arrive?</item>
+        <item>Can you give me some medicine for airsickness?</item>
+        <item>Can you give me a blanket?</item>
+        <item>Can I use my laptop?</item>
+        <item>Where's the luggage claim?</item>
+
+    </string-array>
+
+    <string-array name="transportation_phrases_romaji">
+        <item>Kippu wa doko de kaemasu ka?</item>
+        <item>sakini chikettowo Kawanakereba narimasenka?</item>
+        <item>made ikuradesu ka?</item>
+        <item>katamichidesuka, oofukudesuka?</item>
+        <item>made ichi mai onegaishimasu</item>
+        <item>kodomo no waribiki wa arimasu ka??</item>
+        <item>dono kurai kakarimasu ka?</item>
+        <item>ni iku basugaarimasuka?</item>
+        <item>shihatsu no basu wa itsudesuka?</item>
+        <item>saishuu no basu wa itsudesuka?</item>
+        <item>tsugi no basu wa itsudesuka?</item>
+        <item>densyaha itu kimasuka?</item>
+        <item>takushii o yonde moraemasu ka?</item>
+        <item>kono juusho made onegaishimasu?</item>
+        <item>koreha … ni tomarimasu ka? </item>
+        <item>kuukou e ikimasu.</item>
+        <item>chekkuinha nanzikaradekimasuka?</item>
+        <item>litu touzyoudekimasuka?</item>
+        <item>touzyouguchiha dokodesuka?</item>
+        <item>madogiwano sekiwo onegaishimasu?</item>
+        <item>teizini touchakushimasuka?</item>
+        <item>itu touchakushimasuka?</item>
+        <item>yoidomegusuriwo moraemasuka?</item>
+        <item>vurankettowo kudasai?</item>
+        <item>watashino pasokonwo tsukattemoiidesuka?</item>
+        <item>suutsukeesuwo uketorubasyoha dokodesuka?</item>
+    </string-array>
+
+    <string-array name="time_phrases">
+        <item>What time is it?</item>
+        <item>At what time?</item>
+        <item>morning</item>
+        <item>noon</item>
+        <item>afternoon</item>
+        <item>evening</item>
+        <item>night</item>
+        <item>midnight</item>
+        <item>year</item>
+        <item>month</item>
+        <item>week</item>
+        <item>day</item>
+        <item>hour</item>
+        <item>minute</item>
+        <item>second</item>
+        <item>present</item>
+        <item>past</item>
+        <item>future</item>
+        <item>time</item>
+
+        <item>now</item>
+        <item>today</item>
+        <item>this morning</item>
+        <item>this afternoon</item>
+        <item>tonight</item>
+        <item>this week</item>
+        <item>this month</item>
+        <item>this year</item>
+
+        <item>yesterday</item>
+        <item>yesterday morning</item>
+        <item>yesterday evening</item>
+        <item>day before yesterday</item>
+        <item>last night</item>
+        <item>last week</item>
+        <item>last month</item>
+        <item>last year</item>
+
+        <item>tomorrow</item>
+        <item>tomorrow morning</item>
+        <item>tomorrow afternoon</item>
+        <item>tomorrow evening</item>
+        <item>day after tomorrow</item>
+        <item>next week</item>
+        <item>next month</item>
+        <item>next year</item>
+    </string-array>
+
+    <string-array name="time_phrases_romaji">
+        <item>nanji desu ka?</item>
+        <item>naji ni?</item>
+        <item>asa</item>
+        <item>shougo</item>
+        <item>gogo</item>
+        <item>yugata</item>
+        <item>yoru</item>
+        <item>mayonaka</item>
+        <item>nen</item>
+        <item>gatsu</item>
+        <item>shu</item>
+        <item>nichi</item>
+        <item>ji</item>
+        <item>bu</item>
+        <item>byou</item>
+        <item>genzai</item>
+        <item>kako</item>
+        <item>shourai</item>
+        <item>jikan</item>
+
+        <item>ima</item>
+        <item>kyou</item>
+        <item>kesa</item>
+        <item>kyou no gogo</item>
+        <item>konya</item>
+        <item>kon shuu</item>
+        <item>kon getsu</item>
+        <item>kotoshi</item>
+
+        <item>kinou</item>
+        <item>kinou no asa</item>
+        <item>kinou no gogo</item>
+        <item>kinou no yoru</item>
+        <item>yube</item>
+        <item>sen shuu</item>
+        <item>sen getsu</item>
+        <item>saku nen</item>
+
+        <item>ashita</item>
+        <item>ashita asa</item>
+        <item>ashita no gogo</item>
+        <item>ashita no ban</item>
+        <item>asatte</item>
+        <item>rai shuu</item>
+        <item>rai getsu</item>
+        <item>rai nen</item>
+
+    </string-array>
+
+    <string-array name="color_phrases">
+        <item>What color is it?</item>
+        <item>What is your favorite color?</item>
+        <item>red</item>
+        <item>orange</item>
+        <item>yellow</item>
+        <item>green</item>
+        <item>cyan</item>
+        <item>blue</item>
+        <item>purple</item>
+        <item>brown</item>
+        <item>pink</item>
+        <item>white</item>
+        <item>black</item>
+        <item>grey</item>
+        <item>silver</item>
+        <item>gold</item>
+        <item>color</item>
+    </string-array>
+
+    <string-array name="color_phrases_romaji">
+        <item>naniirodesu ka?</item>
+        <item>dono iroga sukidesuka?</item>
+        <item>akairo</item>
+        <item>daidaiiro</item>
+        <item>kiiro</item>
+        <item>midoriiro</item>
+        <item>aomidoriiro</item>
+        <item>aoiro</item>
+        <item>murasakirro</item>
+        <item>chairo</item>
+        <item>momoiro</item>
+        <item>shiroiro</item>
+        <item>kuroiro</item>
+        <item>haiiro</item>
+        <item>gin iro</item>
+        <item>kin iro</item>
+        <item>iro</item>
+    </string-array>
+</resources>

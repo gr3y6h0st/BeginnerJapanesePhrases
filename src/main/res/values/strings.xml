@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name">Beginner Japanese</string>
+    <string name="tab_text_Phrases">Phrases</string>
+    <string name="tab_text_Favorites">Favorites</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Admob Strings -->
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+
+    <!-- Strings related to Settings -->
+    <string name="pref_header_appearance">Appearance</string>
+    <string name="pref_title_display_name">Display name (Coming Soon™)</string>
+    <string name="pref_default_display_name">John Smith</string>
+    <string name="pref_font_size_label">Font Size (Coming Soon™)</string>
+
+    <!-- Implement in future -->
+    <string-array name="pref_font_size_list_titles">
+        <item>Small</item>
+        <item>Default</item>
+        <item>Large</item>
+    </string-array>
+
+    <string-array name="pref_font_size_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Small</item>
+        <item>Normal</item>
+        <item>Large</item>
+    </string-array>
+
+    <string name="appTheme">Dark Theme</string>
+    <string name="appThemeSummary">Switches to a darker UI theme. Helps reduce overall brightness.</string>
+    <string name="search_translate_hint">Japanese Translator</string>
+    <string name="translator_results_label">Translator Results</string>
+    <string name="sort_key">app_theme</string>
+    <string name="dark_theme_default">false</string>
+    <string name="app_widget_text">Quick Search for English to Japanese Translations</string>
+    <string name="add_widget">Add widget</string>
+    <string name="Translator_Search_Icon">Translator Search Icon for Beginner Japanese</string>
+
+    <!--Content Descriptions -->
+    <string name="favorite_button_content_description">Favorite button will save phrase under Favorites section.</string>
+    <string name="category_imageview_content_desc">Image for Category</string>
+    <string name="english_translate_label">English:</string>
+    <string name="japanese_translate_label">Japanese:</string>
+    <string name="hiragana_tab_label">Hiragana</string>
+
+    <string-array name="hiragana_syllabary">
+        <item>\u3041</item>
+        <item>\u3042</item>
+        <item>\u3043</item>
+        <item>\u3044</item>
+        <item>\u3045</item>
+        <item>\u3046</item>
+        <item>\u3047</item>
+        <item>\u3048</item>
+        <item>\u3049</item>
+        <item>\u304A</item>
+        <item>\u304B</item>
+        <item>\u304C</item>
+        <item>\u304D</item>
+        <item>\u304E</item>
+        <item>\u304F</item>
+        <item>\u3050</item>
+        <item>\u3051</item>
+        <item>\u3052</item>
+        <item>\u3053</item>
+        <item>\u3054</item>
+        <item>\u3055</item>
+        <item>\u3056</item>
+        <item>\u3057</item>
+        <item>\u3058</item>
+        <item>\u3059</item>
+        <item>\u305A</item>
+        <item>\u305B</item>
+
+    </string-array>
+</resources>
