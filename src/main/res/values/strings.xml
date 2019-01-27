@@ -49,6 +49,7 @@
     <string name="english_translate_label">English:</string>
     <string name="japanese_translate_label">Japanese:</string>
     <string name="hiragana_tab_label">Hiragana</string>
+    <string name="stroke_order_hirgana_content_desc">Stroke Order Hirgana Symbol</string>
 
     <string-array name="hiragana_syllabary">
         <item>\u3041</item>
@@ -78,6 +79,6 @@
         <item>\u3059</item>
         <item>\u305A</item>
         <item>\u305B</item>
-
     </string-array>
+
 </resources>
