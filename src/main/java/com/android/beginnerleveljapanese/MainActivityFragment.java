@@ -175,7 +175,7 @@ public class MainActivityFragment extends Fragment implements
 
                 mAdView.setVisibility(View.GONE);
 
-                hiragana_data_arr = getResources().getStringArray(R.array.hiragana_vowels);
+                hiragana_data_arr = getResources().getStringArray(R.array.hiragana_syllabary);
                 Log.i(TAG, "TEST FOR HIRAGANA: " + hiragana_data_arr[0] + hiragana_data_arr[1]);
                 hiraganaAdapter = new HiraganaAdapter(getContext(), hiragana_data_arr,this);
                 hiraganaLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());

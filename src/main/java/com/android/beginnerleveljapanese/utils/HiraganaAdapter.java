@@ -85,12 +85,12 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
             Log.d(TAG, "DATA DETECTED" + " " + data[position]);
 
             //gets category title based off position
-            String hiragana_category_title = data[position];
+            String hiragana_syllabary = data[position];
             //populate each category tv w/ proper title.
-            holder.hiraganaTv.setText(hiragana_category_title);
+            holder.hiraganaTv.setText(hiragana_syllabary);
 
 
-            switch (hiragana_category_title){
+            switch (hiragana_syllabary){
 
                 case "\u3042":
                     Glide.with(mContext)
@@ -118,9 +118,48 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
                 case "\u3048":
                     Glide.with(mContext)
                             .asGif()
-                            .load(R.drawable.hiragana_a_stroke_order_animation)
+                            .load(R.drawable.hiragana_e_stroke_order_animation)
                             .into(holder.hirganaIv);
                     break;
+
+                case "\u3049":
+                    Glide.with(mContext)
+                            .asGif()
+                            .load(R.drawable.hiragana_o_stroke_order_animation)
+                            .into(holder.hirganaIv);
+                    break;
+
+                case "\u304B":
+                    Glide.with(mContext)
+                            .asGif()
+                            .load(R.drawable.hiragana_ka_stroke_order_animation)
+                            .into(holder.hirganaIv);
+                    break;
+                case "\u304D":
+                    Glide.with(mContext)
+                            .asGif()
+                            .load(R.drawable.hiragana_ki_stroke_order_animation)
+                            .into(holder.hirganaIv);
+                    break;
+                case "\u304F":
+                    Glide.with(mContext)
+                            .asGif()
+                            .load(R.drawable.hiragana_ku_stroke_order_animation)
+                            .into(holder.hirganaIv);
+                    break;
+                case "\u3051":
+                    Glide.with(mContext)
+                            .asGif()
+                            .load(R.drawable.hiragana_ke_stroke_order_animation)
+                            .into(holder.hirganaIv);
+                    break;
+                case "\u3053":
+                    Glide.with(mContext)
+                            .asGif()
+                            .load(R.drawable.hiragana_ko_stroke_order_animation)
+                            .into(holder.hirganaIv);
+                    break;
+
             }
         }
 
