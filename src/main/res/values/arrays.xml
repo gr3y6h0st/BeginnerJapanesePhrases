@@ -784,4 +784,61 @@
         <item>kin iro</item>
         <item>iro</item>
     </string-array>
+
+    <string-array name="hiragana_vowels">
+        <item>\u3042</item>
+        <item>\u3044</item>
+        <item>\u3046</item>
+        <item>\u3048</item>
+        <item>\u3049</item>
+    </string-array>
+
+    <string-array name="hiragana_k">
+        <item>\u304B</item>
+        <item>\u304D</item>
+        <item>\u304E</item>
+        <item>\u3051</item>
+        <item>\u3053</item>
+    </string-array>
+    
+    <string-array name="hirgana_g">
+        <item>\u304C Ga</item>
+        <item>\u304E Gi</item>
+        <item>\u3050 Gu</item>
+        <item>\u3052 Ge</item>
+        <item>\u3054 Go</item>
+    </string-array>
+
+    <string-array name="hirgana_s">
+        <item>\u3055 Sa</item>
+        <item>\u3057 Si</item>
+        <item>\u3059 Su</item>
+        <item>\u305B Se</item>
+        <item>\u305D So</item>
+    </string-array>
+
+    <string-array name="hirgana_z">
+        <item>\u3056 Za</item>
+        <item>\u3058 Zi</item>
+        <item>\u305A Zu</item>
+        <item>\u305C Ze</item>
+        <item>\u305E Zo</item>
+    </string-array>
+
+    <string-array name="hirgana_t">
+        <item>\u305F Ta</item>
+        <item>\u3061 Ti</item>
+        <item>\u3064 Tu</item>
+        <item>\u3066 Te</item>
+        <item>\u3068 To</item>
+    </string-array>
+
+    <string-array name="hirgana_d">
+        <item>\u3060</item>
+        <item>\u3062</item>
+        <item>\u3065</item>
+        <item>\u3067</item>
+        <item>\u3069</item>
+    </string-array>
+
 </resources>

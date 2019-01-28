@@ -51,34 +51,5 @@
     <string name="hiragana_tab_label">Hiragana</string>
     <string name="stroke_order_hirgana_content_desc">Stroke Order Hirgana Symbol</string>
 
-    <string-array name="hiragana_syllabary">
-        <item>\u3041</item>
-        <item>\u3042</item>
-        <item>\u3043</item>
-        <item>\u3044</item>
-        <item>\u3045</item>
-        <item>\u3046</item>
-        <item>\u3047</item>
-        <item>\u3048</item>
-        <item>\u3049</item>
-        <item>\u304A</item>
-        <item>\u304B</item>
-        <item>\u304C</item>
-        <item>\u304D</item>
-        <item>\u304E</item>
-        <item>\u304F</item>
-        <item>\u3050</item>
-        <item>\u3051</item>
-        <item>\u3052</item>
-        <item>\u3053</item>
-        <item>\u3054</item>
-        <item>\u3055</item>
-        <item>\u3056</item>
-        <item>\u3057</item>
-        <item>\u3058</item>
-        <item>\u3059</item>
-        <item>\u305A</item>
-        <item>\u305B</item>
-    </string-array>
 
 </resources>

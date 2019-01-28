@@ -37,7 +37,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@drawable/hiragana_a_stroke_order_animation" />
+                tools:srcCompat="@drawable/hiragana_aa_stroke_order_animation" />
 
             <TextView
                 android:id="@+id/hiraganaTv"

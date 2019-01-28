@@ -1,7 +1,6 @@
 package com.android.beginnerleveljapanese.utils;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -14,10 +13,8 @@ import android.widget.TextView;
 
 import com.android.beginnerleveljapanese.R;
 import com.bumptech.glide.Glide;
-import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 
 public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.HiraganaViewHolder> {
@@ -94,13 +91,6 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
 
 
             switch (hiragana_category_title){
-                case "\u3041":
-                    Glide.with(mContext)
-                            .asGif()
-                            .load(R.drawable.hiragana_a_stroke_order_animation)
-                            .into(holder.hirganaIv);
-                    break;
-
 
                 case "\u3042":
                     Glide.with(mContext)
@@ -108,10 +98,6 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
                             .load(R.drawable.hiragana_a_stroke_order_animation)
                             .into(holder.hirganaIv);
 
-                case "\u3043":
-                    Glide.with(mContext)
-                            .load(R.drawable.hiragana_i_stroke_order_animation)
-                            .into(holder.hirganaIv);
                     break;
 
                 case "\u3044":
@@ -121,26 +107,13 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
                             .into(holder.hirganaIv);
                     break;
 
-                case "\\u3045":
+                case "\u3046":
                     Glide.with(mContext)
                             .asGif()
                             .load(R.drawable.hiragana_u_stroke_order_animation)
                             .into(holder.hirganaIv);
                     break;
 
-                case "\\u3046":
-                    Glide.with(mContext)
-                            .asGif()
-                            .load(R.drawable.hiragana_u_stroke_order_animation)
-                            .into(holder.hirganaIv);
-                    break;
-                    /*
-
-                case "\\u3047":
-                    Glide.with(mContext)
-                            .load(R.drawable.arrow_down)
-                            .into(holder.hirganaIv);
-                    break;
 
                 case "\u3048":
                     Glide.with(mContext)
@@ -148,14 +121,6 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
                             .load(R.drawable.hiragana_a_stroke_order_animation)
                             .into(holder.hirganaIv);
                     break;
-
-                case "\u3049":
-                    Glide.with(mContext)
-                            .asGif()
-                            .load(R.drawable.hiragana_a_stroke_order_animation)
-                            .into(holder.hirganaIv);
-                    break;
-                    */
             }
         }
 
@@ -170,6 +135,16 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
                 }
             }
         });
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
     }
 
     @Override

@@ -11,7 +11,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -52,8 +51,8 @@ public class MainActivityFragment extends Fragment implements
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int ID_FAVORITES_LOADER = 1990;
 
-    @BindView(R.id.phrases_rv)
-    RecyclerView phrasesRv;
+    @BindView(R.id.fragment_main_rv)
+    RecyclerView fragment_main_rv;
 
     @BindView(R.id.adView)
     AdView mAdView;
@@ -139,9 +138,9 @@ public class MainActivityFragment extends Fragment implements
                 phrasesAdapter = new PhrasesAdapter(getContext(), phrase_label_arr,this);
                 int columnCount = 2;
                 phrasesLayoutManager = new StaggeredGridLayoutManager(columnCount, StaggeredGridLayoutManager.VERTICAL);
-                phrasesRv.setLayoutManager(phrasesLayoutManager);
-                phrasesRv.setHasFixedSize(true);
-                phrasesRv.setAdapter(phrasesAdapter);
+                fragment_main_rv.setLayoutManager(phrasesLayoutManager);
+                fragment_main_rv.setHasFixedSize(true);
+                fragment_main_rv.setAdapter(phrasesAdapter);
 
                 break;
 
@@ -153,10 +152,10 @@ public class MainActivityFragment extends Fragment implements
 
                 //set layout manager
                 favoritesLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
-                phrasesRv.setLayoutManager(favoritesLayoutManager);
-                phrasesRv.setHasFixedSize(true);
+                fragment_main_rv.setLayoutManager(favoritesLayoutManager);
+                fragment_main_rv.setHasFixedSize(true);
                 //set adapter.
-                phrasesRv.setAdapter(favoritedPhrasesAdapter);
+                fragment_main_rv.setAdapter(favoritedPhrasesAdapter);
 
                 if(mCursor != null){
                     //query the favorites via Cursor
@@ -176,14 +175,13 @@ public class MainActivityFragment extends Fragment implements
 
                 mAdView.setVisibility(View.GONE);
 
-                hiragana_data_arr = getResources().getStringArray(R.array.hiragana_syllabary);
+                hiragana_data_arr = getResources().getStringArray(R.array.hiragana_vowels);
                 Log.i(TAG, "TEST FOR HIRAGANA: " + hiragana_data_arr[0] + hiragana_data_arr[1]);
                 hiraganaAdapter = new HiraganaAdapter(getContext(), hiragana_data_arr,this);
-                int hirgana_column_count = 9;
                 hiraganaLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
-                phrasesRv.setLayoutManager(hiraganaLayoutManager);
-                phrasesRv.setHasFixedSize(true);
-                phrasesRv.setAdapter(hiraganaAdapter);
+                fragment_main_rv.setLayoutManager(hiraganaLayoutManager);
+                fragment_main_rv.setHasFixedSize(true);
+                fragment_main_rv.setAdapter(hiraganaAdapter);
 
                 break;
 
