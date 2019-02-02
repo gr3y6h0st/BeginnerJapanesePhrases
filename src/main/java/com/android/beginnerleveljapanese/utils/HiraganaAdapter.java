@@ -283,35 +283,35 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
                 case "\u306F":
                     Glide.with(mContext)
                             .asGif()
-                            .load(R.drawable.hiragana_to_stroke_order_animation)
+                            .load(R.drawable.hiragana_ha_stroke_order_animation)
                             .into(holder.hirganaIv);
                     break;
 
                 case "\u3072":
                     Glide.with(mContext)
                             .asGif()
-                            .load(R.drawable.hiragana_to_stroke_order_animation)
+                            .load(R.drawable.hiragana_hi_stroke_order_animation)
                             .into(holder.hirganaIv);
                     break;
 
                 case "\u3075":
                     Glide.with(mContext)
                             .asGif()
-                            .load(R.drawable.hiragana_to_stroke_order_animation)
+                            .load(R.drawable.hiragana_fu_stroke_order_animation)
                             .into(holder.hirganaIv);
                     break;
 
                 case "\u3078":
                     Glide.with(mContext)
                             .asGif()
-                            .load(R.drawable.hiragana_to_stroke_order_animation)
+                            .load(R.drawable.hiragana_he_stroke_order_animation)
                             .into(holder.hirganaIv);
                     break;
 
                 case "\u307B":
                     Glide.with(mContext)
                             .asGif()
-                            .load(R.drawable.hiragana_to_stroke_order_animation)
+                            .load(R.drawable.hiragana_ho_stroke_order_animation)
                             .into(holder.hirganaIv);
                     break;
 
