@@ -315,6 +315,50 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
                             .into(holder.hirganaIv);
                     break;
 
+                /**
+                 *          <-- "m" family -->
+                 *         <item>\u307E</item>
+                 *         <item>\u307F</item>
+                 *         <item>\u3080</item>
+                 *         <item>\u3081</item>
+                 *         <item>\u3082</item>
+                 */
+
+                case "\u307E":
+                    Glide.with(mContext)
+                            .asGif()
+                            .load(R.drawable.hiragana_ma_stroke_order_animation)
+                            .into(holder.hirganaIv);
+                    break;
+
+                case "\u307F":
+                    Glide.with(mContext)
+                            .asGif()
+                            .load(R.drawable.hiragana_mi_stroke_order_animation)
+                            .into(holder.hirganaIv);
+                    break;
+
+                case "\u3080":
+                    Glide.with(mContext)
+                            .asGif()
+                            .load(R.drawable.hiragana_mu_stroke_order_animation)
+                            .into(holder.hirganaIv);
+                    break;
+
+                case "\u3081":
+                    Glide.with(mContext)
+                            .asGif()
+                            .load(R.drawable.hiragana_me_stroke_order_animation)
+                            .into(holder.hirganaIv);
+                    break;
+
+                case "\u3082":
+                    Glide.with(mContext)
+                            .asGif()
+                            .load(R.drawable.hiragana_mo_stroke_order_animation)
+                            .into(holder.hirganaIv);
+                    break;
+
 
             }
         }
