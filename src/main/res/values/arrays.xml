@@ -834,6 +834,65 @@
         <item>\u3065</item>
         <item>\u3067</item>
         <item>\u3069</item>
+
+        <!-- "n" family -->
+        <item>\u306A</item>
+        <item>\u306B</item>
+        <item>\u306C</item>
+        <item>\u306D</item>
+        <item>\u306E</item>
+
+        <!-- "h" family -->
+        <item>\u306F</item>
+        <item>\u3072</item>
+        <item>\u3075</item>
+        <item>\u3078</item>
+        <item>\u307B</item>
+
+        <!-- "b" family -->
+        <item>\u3070</item>
+        <item>\u3073</item>
+        <item>\u3076</item>
+        <item>\u3079</item>
+        <item>\u307C</item>
+
+        <!-- "p" family -->
+        <item>\u3071</item>
+        <item>\u3074</item>
+        <item>\u3077</item>
+        <item>\u307A</item>
+        <item>\u307D</item>
+
+        <!-- "m" family -->
+        <item>\u307E</item>
+        <item>\u307F</item>
+        <item>\u3080</item>
+        <item>\u3081</item>
+        <item>\u3082</item>
+
+        <!-- "y" family -->
+        <item>\u3084</item>
+        <item>\u3086</item>
+        <item>\u3088</item>
+
+
+        <!-- "r" family -->
+        <item>\u3089</item>
+        <item>\u308A</item>
+        <item>\u308B</item>
+        <item>\u308C</item>
+        <item>\u308D</item>
+
+        <!-- "w" family -->
+        <item>\u308F</item>
+        <item>\u3090</item>
+        <item>\u3091</item>
+        <item>\u3092</item>
+
+        <!-- Misc. hirgana character -->
+        <item>\u3094</item>
+        <item>\u3093</item>
+
     </string-array>
 
 </resources>

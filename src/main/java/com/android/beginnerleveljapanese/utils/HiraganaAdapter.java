@@ -89,7 +89,7 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
             //populate each category tv w/ proper title.
             holder.hiraganaTv.setText(hiragana_syllabary);
 
-
+            //Populates Hiragana based on current position of holder
             switch (hiragana_syllabary){
 
                 case "\u3042":
@@ -226,6 +226,95 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
                             .load(R.drawable.hiragana_to_stroke_order_animation)
                             .into(holder.hirganaIv);
                     break;
+
+                /**
+                 *                  "n"
+                 *         <item>\u306A</item>
+                 *         <item>\u306B</item>
+                 *         <item>\u306C</item>
+                 *         <item>\u306D</item>
+                 *         <item>\u306E</item>
+                 */
+
+                case "\u306A":
+                    Glide.with(mContext)
+                            .asGif()
+                            .load(R.drawable.hiragana_na_stroke_order_animation)
+                            .into(holder.hirganaIv);
+                    break;
+
+                case "\u306B":
+                    Glide.with(mContext)
+                            .asGif()
+                            .load(R.drawable.hiragana_ni_stroke_order_animation)
+                            .into(holder.hirganaIv);
+                    break;
+
+                case "\u306C":
+                    Glide.with(mContext)
+                            .asGif()
+                            .load(R.drawable.hiragana_nu_stroke_order_animation)
+                            .into(holder.hirganaIv);
+                    break;
+
+                case "\u306D":
+                    Glide.with(mContext)
+                            .asGif()
+                            .load(R.drawable.hiragana_ne_stroke_order_animation)
+                            .into(holder.hirganaIv);
+                    break;
+
+                case "\u306E":
+                    Glide.with(mContext)
+                            .asGif()
+                            .load(R.drawable.hiragana_no_stroke_order_animation)
+                            .into(holder.hirganaIv);
+                    break;
+
+                /**
+                 *                  "h"
+                 *         <item>\u306F</item>
+                 *         <item>\u3072</item>
+                 *         <item>\u3075</item>
+                 *         <item>\u3078</item>
+                 *         <item>\u307B</item>
+                 */
+
+                case "\u306F":
+                    Glide.with(mContext)
+                            .asGif()
+                            .load(R.drawable.hiragana_to_stroke_order_animation)
+                            .into(holder.hirganaIv);
+                    break;
+
+                case "\u3072":
+                    Glide.with(mContext)
+                            .asGif()
+                            .load(R.drawable.hiragana_to_stroke_order_animation)
+                            .into(holder.hirganaIv);
+                    break;
+
+                case "\u3075":
+                    Glide.with(mContext)
+                            .asGif()
+                            .load(R.drawable.hiragana_to_stroke_order_animation)
+                            .into(holder.hirganaIv);
+                    break;
+
+                case "\u3078":
+                    Glide.with(mContext)
+                            .asGif()
+                            .load(R.drawable.hiragana_to_stroke_order_animation)
+                            .into(holder.hirganaIv);
+                    break;
+
+                case "\u307B":
+                    Glide.with(mContext)
+                            .asGif()
+                            .load(R.drawable.hiragana_to_stroke_order_animation)
+                            .into(holder.hirganaIv);
+                    break;
+
 
             }
         }
