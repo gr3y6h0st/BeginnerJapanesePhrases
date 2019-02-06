@@ -21,24 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/hiragana_list_iv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="2dp"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/stroke_order_hirgana_content_desc"
-                android:padding="16dp"
-                app:layout_constraintBottom_toTopOf="@+id/phrases_tv"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@drawable/hiragana_aa_stroke_order_animation" />
-
             <TextView
                 android:id="@+id/hiraganaTv"
                 android:layout_width="wrap_content"
@@ -53,9 +35,23 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/hiragana_list_iv"
+                app:layout_constraintTop_toBottomOf="parent"
                 tools:text="\u3044" />
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
+
+    <ImageView
+        android:id="@+id/hiragana_list_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="2dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/stroke_order_hirgana_content_desc"
+        android:padding="16dp"
+        tools:srcCompat="@drawable/hiragana_a_stroke_order_animation" />
 
 </LinearLayout>

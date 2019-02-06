@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -178,7 +179,7 @@ public class MainActivityFragment extends Fragment implements
                 hiragana_data_arr = getResources().getStringArray(R.array.hiragana_syllabary);
                 Log.i(TAG, "TEST FOR HIRAGANA: " + hiragana_data_arr[0] + hiragana_data_arr[1]);
                 hiraganaAdapter = new HiraganaAdapter(getContext(), hiragana_data_arr,this);
-                hiraganaLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+                hiraganaLayoutManager = new GridLayoutManager(getActivity().getApplicationContext(),5, LinearLayoutManager.VERTICAL,false);
                 fragment_main_rv.setLayoutManager(hiraganaLayoutManager);
                 fragment_main_rv.setHasFixedSize(true);
                 fragment_main_rv.setAdapter(hiraganaAdapter);
