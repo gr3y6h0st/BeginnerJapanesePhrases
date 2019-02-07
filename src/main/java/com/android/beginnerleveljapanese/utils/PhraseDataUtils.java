@@ -29,11 +29,6 @@ public class PhraseDataUtils {
             phraseValues.add(createPhraseContentValues(phrase_category, englishTextArr[i], romajiTextArr[i], false));
             Log.v(TAG, phraseValues.get(0).toString());
         }
-
-        /*context.getContentResolver().delete(FavoritesContract.FavoriteEntry.CONTENT_URI,
-                null,
-                null);*/
-
         context.getContentResolver().bulkInsert(
                 FavoritesContract.FavoriteEntry.CONTENT_URI,
                 phraseValues.toArray(new ContentValues[englishTextArr.length]));

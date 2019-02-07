@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
-    private Bundle translateBundle = new Bundle();
     public static final int ID_TRANSLATOR_LOADER = 19;
     private FirebaseAnalytics mFirebaseAnalytics;
 
@@ -108,29 +107,22 @@ public class MainActivity extends AppCompatActivity implements
         if (key.equals(getString(R.string.sort_key))) {
             String value = String.valueOf(sharedPreferences.getBoolean(key,
                     Boolean.parseBoolean(getResources().getString(R.string.dark_theme_default))));
-
             switch (value) {
-
                 case "false": {
                     AppCompatDelegate
                             .setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-
                     System.out.println(" changed preference to " + value);
                     break;
                 }
-
                 case "true": {
-
                     AppCompatDelegate
                             .setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-
                     System.out.println(" changed preference to " + value);
                     break;
                 }
             }
         }
         super.onStart();
-
     }
 
     @Override
@@ -155,38 +147,30 @@ public class MainActivity extends AppCompatActivity implements
             onSearchRequested();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-
         if (key.equals(getString(R.string.sort_key))) {
             String value = String.valueOf(sharedPreferences.getBoolean(key,
                     Boolean.parseBoolean(getResources().getString(R.string.dark_theme_default))));
-
             switch (value) {
-
                 case "false": {
                     AppCompatDelegate
                             .setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-
                     System.out.println(" changed preference to " + value);
                     break;
                 }
-
                 case "true": {
 
                     AppCompatDelegate
                             .setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-
                     System.out.println(" changed preference to " + value);
                     break;
                 }
             }
-
         }
     }
 

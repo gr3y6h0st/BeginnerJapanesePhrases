@@ -23,16 +23,21 @@ import android.view.ViewGroup;
 import com.android.beginnerleveljapanese.data.FavoriteData;
 import com.android.beginnerleveljapanese.data.FavoriteDbHelper;
 import com.android.beginnerleveljapanese.data.FavoritesContract;
+import com.android.beginnerleveljapanese.data.HiraganaData;
 import com.android.beginnerleveljapanese.utils.FavoritedPhrasesAdapter;
 import com.android.beginnerleveljapanese.utils.HiraganaAdapter;
+import com.android.beginnerleveljapanese.utils.HiraganaDataUtils;
 import com.android.beginnerleveljapanese.utils.PhrasesAdapter;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.android.beginnerleveljapanese.utils.HiraganaDataUtils.*;
 
 public class MainActivityFragment extends Fragment implements
         PhrasesAdapter.PhrasesAdapterOnClickListener,
@@ -67,11 +72,11 @@ public class MainActivityFragment extends Fragment implements
     private HiraganaAdapter hiraganaAdapter;
 
     private String[] phrase_label_arr;
-    private String[] hiragana_data_arr;
     private int mCurrentSection;
     private SQLiteDatabase mDb;
 
     private ArrayList<FavoriteData> favoriteDataArrayList = new ArrayList<>();
+    private List<HiraganaData> hiraganaDataArrayList = new ArrayList<>();
     private FavoriteData favoriteData;
     private String romaji_text;
     private String english_text;
@@ -96,17 +101,13 @@ public class MainActivityFragment extends Fragment implements
      * number.
      */
     public static MainActivityFragment newInstance(int sectionNumber) {
-        //TODO: Use a switch statement on sectionNumber to determine behavior of Fragment.
         MainActivityFragment fragment = new MainActivityFragment();
-
         switch (sectionNumber) {
-
             default:
                 Bundle phrases_bundle = new Bundle();
                 phrases_bundle.putInt(ARG_SECTION_NUMBER, sectionNumber);
                 fragment.setArguments(phrases_bundle);
                 break;
-
         }
         return fragment;
     }
@@ -176,9 +177,13 @@ public class MainActivityFragment extends Fragment implements
 
                 mAdView.setVisibility(View.GONE);
 
-                hiragana_data_arr = getResources().getStringArray(R.array.hiragana_syllabary);
+                String[] hiragana_data_arr = getResources().getStringArray(R.array.hiragana_syllabary);
+                String[] hirgana_romaji_arr = getResources().getStringArray(R.array.hiragana_syllabary);
+                hiraganaDataArrayList = getHiraganaData(getActivity().getApplicationContext(), hiragana_data_arr, hirgana_romaji_arr);
+
                 Log.i(TAG, "TEST FOR HIRAGANA: " + hiragana_data_arr[0] + hiragana_data_arr[1]);
-                hiraganaAdapter = new HiraganaAdapter(getContext(), hiragana_data_arr,this);
+
+                hiraganaAdapter = new HiraganaAdapter(getContext(), hiraganaDataArrayList,this);
                 hiraganaLayoutManager = new GridLayoutManager(getActivity().getApplicationContext(),5, LinearLayoutManager.VERTICAL,false);
                 fragment_main_rv.setLayoutManager(hiraganaLayoutManager);
                 fragment_main_rv.setHasFixedSize(true);
