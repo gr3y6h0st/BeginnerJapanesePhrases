@@ -895,4 +895,116 @@
 
     </string-array>
 
+    <string-array name="hiragana_syllabary_english_translate">
+        <!-- "Vowels" -->
+        <item>a</item>
+        <item>i</item>
+        <item>u</item>
+        <item>e</item>
+        <item>o</item>
+
+        <!-- "k" family -->
+        <item>ka</item>
+        <item>ki</item>
+        <item>ku</item>
+        <item>ke</item>
+        <item>ko</item>
+
+        <!-- "g" family -->
+        <item>ga</item>
+        <item>gi</item>
+        <item>gu</item>
+        <item>ge</item>
+        <item>go</item>
+
+        <!-- "s" family -->
+        <item>sa</item>
+        <item>si</item>
+        <item>su</item>
+        <item>se</item>
+        <item>so</item>
+
+        <!-- "z" family -->
+        <item>za</item>
+        <item>zi</item>
+        <item>zu</item>
+        <item>ze</item>
+        <item>zo</item>
+
+        <!-- "t" family -->
+        <item>ta</item>
+        <item>ti</item>
+        <item>tu</item>
+        <item>te</item>
+        <item>to</item>
+
+        <!-- "d" family -->
+        <item>da</item>
+        <item>di</item>
+        <item>du</item>
+        <item>de</item>
+        <item>do</item>
+
+        <!-- "n" family -->
+        <item>na</item>
+        <item>ni</item>
+        <item>nu</item>
+        <item>ne</item>
+        <item>no</item>
+
+        <!-- "h" family -->
+        <item>ha</item>
+        <item>hi</item>
+        <item>hu</item>
+        <item>he</item>
+        <item>ho</item>
+
+        <!-- "b" family -->
+        <item>ba</item>
+        <item>bi</item>
+        <item>bu</item>
+        <item>be</item>
+        <item>bo</item>
+
+        <!-- "p" family -->
+        <item>pa</item>
+        <item>pi</item>
+        <item>pu</item>
+        <item>pe</item>
+        <item>po</item>
+
+        <!-- "m" family -->
+        <item>ma</item>
+        <item>mi</item>
+        <item>mu</item>
+        <item>me</item>
+        <item>mo</item>
+
+        <!-- "y" family -->
+        <item>ya</item>
+        <item>yu</item>
+        <item>yo</item>
+
+
+        <!-- "r" family -->
+        <item>ra</item>
+        <item>ri</item>
+        <item>ru</item>
+        <item>re</item>
+        <item>ro</item>
+
+        <!-- "w" family -->
+        <item>wa</item>
+        <item>wi</item>
+        <item>we</item>
+        <item>wo</item>
+
+        <!-- Misc. hirgana character -->
+        <item>vu</item>
+        <item>n</item>
+
+    </string-array>
+
+
+
 </resources>

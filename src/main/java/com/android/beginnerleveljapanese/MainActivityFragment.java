@@ -178,7 +178,7 @@ public class MainActivityFragment extends Fragment implements
                 mAdView.setVisibility(View.GONE);
 
                 String[] hiragana_data_arr = getResources().getStringArray(R.array.hiragana_syllabary);
-                String[] hirgana_romaji_arr = getResources().getStringArray(R.array.hiragana_syllabary);
+                String[] hirgana_romaji_arr = getResources().getStringArray(R.array.hiragana_syllabary_english_translate);
                 hiraganaDataArrayList = getHiraganaData(getActivity().getApplicationContext(), hiragana_data_arr, hirgana_romaji_arr);
 
                 Log.i(TAG, "TEST FOR HIRAGANA: " + hiragana_data_arr[0] + hiragana_data_arr[1]);

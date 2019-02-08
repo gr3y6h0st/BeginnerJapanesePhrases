@@ -1,6 +1,5 @@
 package com.android.beginnerleveljapanese.utils;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -43,7 +42,7 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
 
 
     public class HiraganaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        @BindView(R.id.hiraganaTv)
+        @BindView(R.id.hiragana_syllabary_tv)
         TextView hiraganaTv;
 
         @BindView(R.id.hiragana_card_view)
@@ -51,6 +50,9 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
 
         @BindView(R.id.hiragana_list_iv)
         ImageView hiraganaIv;
+
+        @BindView(R.id.hiragana_romaji_tv)
+        TextView hiraganaRomajiTv;
 
         HiraganaViewHolder(View view){
             super(view);
@@ -84,6 +86,7 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
     @Override
     public void onBindViewHolder(@NonNull final HiraganaViewHolder holder, int position) {
         final String hiragana_syllabary;
+        final String hiragana_syllabary_romaji_translation;
         if(data == null) {
             Log.d(TAG, "data is null");
             return;
@@ -92,8 +95,11 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
 
             //gets category title based off position
             hiragana_syllabary = data.get(position).getHiraganaUnicode();
-            //populate each category tv w/ proper title.
+            hiragana_syllabary_romaji_translation = data.get(position).getHiraganaRomajiTranslation();
+
+            //populate each category tv w/ proper data.
             holder.hiraganaTv.setText(hiragana_syllabary);
+            holder.hiraganaRomajiTv.setText(hiragana_syllabary_romaji_translation);
         }
 
         //CardView listener expands/contracts CardView's Image.
