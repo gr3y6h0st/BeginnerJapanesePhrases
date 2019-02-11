@@ -1,6 +1,7 @@
 package com.android.beginnerleveljapanese.utils;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
@@ -87,6 +88,7 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
     public void onBindViewHolder(@NonNull final HiraganaViewHolder holder, int position) {
         final String hiragana_syllabary;
         final String hiragana_syllabary_romaji_translation;
+
         if(data == null) {
             Log.d(TAG, "data is null");
             return;
@@ -101,17 +103,37 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
             holder.hiraganaTv.setText(hiragana_syllabary);
             holder.hiraganaRomajiTv.setText(hiragana_syllabary_romaji_translation);
         }
-
-        //CardView listener expands/contracts CardView's Image.
         holder.mCardView.setOnClickListener(new View.OnClickListener() {
+            MediaPlayer hiraganaMediaPlayer;
+
             @Override
             public void onClick(View view) {
+                switch (hiragana_syllabary_romaji_translation){
+                    case "a":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.a);
+                        hiraganaMediaPlayer.seekTo(2000);
+                        hiraganaMediaPlayer.start();
+                        break;
+                    default:
+                        Log.v(TAG, hiragana_syllabary_romaji_translation);
+                        hiraganaMediaPlayer= MediaPlayer.create(mContext, R.raw.chi);
+                        hiraganaMediaPlayer.start();
+                        break;
+                }
+            }
+        });
+
+        /**
+         * CardView OnLongClickListener reveals Stroke Order
+         * for each Hiragana item using an AlertDialog
+         **/
+        holder.mCardView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
                 LayoutInflater factory = LayoutInflater.from(mContext);
                 view = factory.inflate(R.layout.image_preview, null);
                 ImageView gifImageView = view.findViewById(R.id.hiragana_popup_dialog_image_view);
-
                 AlertDialog.Builder share_dialog = new AlertDialog.Builder(mContext);
-                share_dialog.setMessage(hiragana_syllabary);
                 share_dialog.setNegativeButton("Close", null);
                 share_dialog.setView(view);
 
@@ -502,6 +524,9 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
                 }
                 //time to show the dialog!
                 share_dialog.show();
+
+                return false;
+
             }
         });
     }

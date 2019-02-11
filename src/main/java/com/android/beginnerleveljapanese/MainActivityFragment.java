@@ -3,6 +3,7 @@ package com.android.beginnerleveljapanese;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -378,6 +379,7 @@ public class MainActivityFragment extends Fragment implements
 
     @Override
     public void onHiraganaSymbolClicked(int clickedPosition) {
+        //do nothing for now
 
     }
 }
