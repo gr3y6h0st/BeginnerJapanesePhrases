@@ -100,8 +100,13 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
             hiragana_syllabary_romaji_translation = data.get(position).getHiraganaRomajiTranslation();
 
             //populate each category tv w/ proper data.
-            holder.hiraganaTv.setText(hiragana_syllabary);
-            holder.hiraganaRomajiTv.setText(hiragana_syllabary_romaji_translation);
+            if(!hiragana_syllabary_romaji_translation.equals("placeholder")){
+                holder.hiraganaTv.setText(hiragana_syllabary);
+                holder.hiraganaRomajiTv.setText(hiragana_syllabary_romaji_translation);
+            } else{
+                holder.mCardView.setVisibility(View.INVISIBLE);
+            }
+
         }
         holder.mCardView.setOnClickListener(new View.OnClickListener() {
             MediaPlayer hiraganaMediaPlayer;
