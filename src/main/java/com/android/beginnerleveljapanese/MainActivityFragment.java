@@ -340,7 +340,7 @@ public class MainActivityFragment extends Fragment implements
 
     @Override
     public void onPhraseClicked(int clickedPosition) {
-        //do nothing for now
+        //dakuon_do nothing for now
     }
 
     @Override
@@ -379,7 +379,7 @@ public class MainActivityFragment extends Fragment implements
 
     @Override
     public void onHiraganaSymbolClicked(int clickedPosition) {
-        //do nothing for now
+        //dakuon_do nothing for now
 
     }
 }

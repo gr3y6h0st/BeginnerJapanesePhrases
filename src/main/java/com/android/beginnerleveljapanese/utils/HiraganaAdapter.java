@@ -360,7 +360,7 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
                         hiraganaMediaPlayer.start();
                         break;
 
-                    case "wo":
+                    case "wo (o)":
                         hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.wo);
                         hiraganaMediaPlayer.seekTo(2000);
                         hiraganaMediaPlayer.start();
@@ -389,6 +389,132 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
                         hiraganaMediaPlayer.seekTo(2000);
                         hiraganaMediaPlayer.start();
                         break;
+
+                    case "ga":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.ga);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "gi":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.ji);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "gu":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.gu);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "ge":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.ge);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "go":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.go);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "za":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.za);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "zi":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.ji);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "zu":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.zu);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "ze":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.ze);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "zo":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.zo);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "da":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.da);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "di":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.ji);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "du":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.zu);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "de":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.de);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "do":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.dakuon_do);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "ba":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.ba);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "bi":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.bi);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "bu":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.bu);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "be":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.be);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "bo":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.bo);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "pa":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.pa);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "pi":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.pi);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "pu":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.pu);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "pe":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.pe);
+                        hiraganaMediaPlayer.start();
+                        break;
+
+                    case "po":
+                        hiraganaMediaPlayer = MediaPlayer.create(mContext, R.raw.po);
+                        hiraganaMediaPlayer.start();
+                        break;
+
 
                     default:
                         Log.v(TAG, hiragana_syllabary_romaji_translation);

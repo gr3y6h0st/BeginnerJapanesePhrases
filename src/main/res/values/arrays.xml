@@ -887,15 +887,15 @@
 
         <!-- "w" family -->
         <item>\u308F</item>
-        <item>\u3090</item>
         <item>placeholder</item>
-        <item>\u3091</item>
+        <item>placeholder</item>
+        <item>placeholder</item>
         <item>\u3092</item>
 
-        <!-- Misc. hirgana character -->
+        <!-- Misc. hiragana character -->
         <item>placeholder</item>
         <item>placeholder</item>
-        <item>\u3094</item>
+        <item>placeholder</item>
         <item>placeholder</item>
         <item>\u3093</item>
 
@@ -1003,15 +1003,15 @@
 
         <!-- "w" family -->
         <item>wa</item>
-        <item>wi</item>
         <item>placeholder</item>
-        <item>we</item>
-        <item>wo</item>
+        <item>placeholder</item>
+        <item>placeholder</item>
+        <item>wo (o)</item>
 
         <!-- Misc. hirgana character -->
         <item>placeholder</item>
         <item>placeholder</item>
-        <item>vu</item>
+        <item>placeholder</item>
         <item>placeholder</item>
         <item>n</item>
 
