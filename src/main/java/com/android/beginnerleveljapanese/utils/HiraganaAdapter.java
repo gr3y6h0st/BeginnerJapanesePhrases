@@ -3,6 +3,7 @@ package com.android.beginnerleveljapanese.utils;
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
@@ -850,22 +851,16 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
         if(hiraganaMediaPlayer == null) {
             hiraganaMediaPlayer = new MediaPlayer();
         }
-
         hiraganaMediaPlayer.reset();
-
         AssetFileDescriptor sound = mContext.getResources().openRawResourceFd(audioID);
         Log.i(TAG, "SOUND LENGTH: " + sound.getDeclaredLength());
         try {
             hiraganaMediaPlayer.setDataSource(sound.getFileDescriptor(),sound.getStartOffset(),sound.getLength());
             hiraganaMediaPlayer.prepare();
-            if(hiraganaMediaPlayer.getDuration()> 2000){
-                hiraganaMediaPlayer.seekTo(2000);
-            }
         } catch (IOException e) {
             e.printStackTrace();
         }
         hiraganaMediaPlayer.start();
-
     }
 
     @Override
