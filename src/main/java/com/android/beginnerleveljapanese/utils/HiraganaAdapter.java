@@ -128,7 +128,6 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
 
                     case "u":
                         playAudio(R.raw.u);
-
                         break;
 
                     case "e":
@@ -137,7 +136,6 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
 
                     case "o":
                         playAudio( R.raw.o);
-
                         break;
 
                     case "ka":
@@ -306,12 +304,10 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
 
                     case "ga":
                         playAudio(R.raw.ga);
-                        hiraganaMediaPlayer.start();
                         break;
 
                     case "gi":
                         playAudio(R.raw.ji);
-                        hiraganaMediaPlayer.start();
                         break;
 
                     case "gu":
@@ -348,52 +344,42 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
 
                     case "da":
                         playAudio(R.raw.da);
-                        hiraganaMediaPlayer.start();
                         break;
 
                     case "di":
                         playAudio(R.raw.ji);
-                        hiraganaMediaPlayer.start();
                         break;
 
                     case "du":
                         playAudio(R.raw.zu);
-                        hiraganaMediaPlayer.start();
                         break;
 
                     case "de":
                         playAudio(R.raw.de);
-                        hiraganaMediaPlayer.start();
                         break;
 
                     case "do":
                         playAudio(R.raw.dakuon_do);
-                        hiraganaMediaPlayer.start();
                         break;
 
                     case "ba":
                         playAudio(R.raw.ba);
-                        hiraganaMediaPlayer.start();
                         break;
 
                     case "bi":
                         playAudio(R.raw.bi);
-                        hiraganaMediaPlayer.start();
                         break;
 
                     case "bu":
                         playAudio(R.raw.bu);
-                        hiraganaMediaPlayer.start();
                         break;
 
                     case "be":
                         playAudio(R.raw.be);
-                        hiraganaMediaPlayer.start();
                         break;
 
                     case "bo":
                         playAudio(R.raw.bo);
-                        hiraganaMediaPlayer.start();
                         break;
 
                     case "pa":
@@ -403,29 +389,22 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
 
                     case "pi":
                         playAudio(R.raw.pi);
-                        hiraganaMediaPlayer.start();
                         break;
 
                     case "pu":
                         playAudio(R.raw.pu);
-                        hiraganaMediaPlayer.start();
                         break;
 
                     case "pe":
                         playAudio(R.raw.pe);
-                        hiraganaMediaPlayer.start();
                         break;
 
                     case "po":
                         playAudio(R.raw.po);
-                        hiraganaMediaPlayer.start();
                         break;
 
-
                     default:
-                        Log.v(TAG, hiragana_syllabary_romaji_translation);
-                        hiraganaMediaPlayer= MediaPlayer.create(mContext, R.raw.a);
-                        hiraganaMediaPlayer.start();
+                        playAudio(R.raw.a);
                         break;
                 }
             }
