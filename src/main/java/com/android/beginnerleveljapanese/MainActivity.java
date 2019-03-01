@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity implements
      */
     @BindView(R.id.container) ViewPager mViewPager;
     @BindView(R.id.tabs) TabLayout tabLayout;
-    @BindView(R.id.fab) FloatingActionButton main_activity_fab;
     //@BindView(R.id.toolbar) Toolbar toolbar;
 
     @Override
@@ -83,20 +82,6 @@ public class MainActivity extends AppCompatActivity implements
         });
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-
-        main_activity_fab.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                  try {
-                      //creates the SearchActivity
-                      Log.i("FAB", "CLICKED");
-                      onSearchRequested();
-                  } catch (Exception e) {
-                      e.printStackTrace();
-                  }
-
-              }
-        });
     }
 
     @Override
