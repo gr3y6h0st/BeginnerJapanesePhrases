@@ -9,10 +9,14 @@ import android.widget.RemoteViewsService;
 
 import com.android.beginnerleveljapanese.R;
 
+import java.util.Random;
+
 public class BeginnerJapaneseRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
     private static final int mCount = 10;
     private Context mContext;
     private int mAppWidgetId;
+    String[] romajiArray;
+    String randomRomajiPhrase;
 
     public BeginnerJapaneseRemoteViewsFactory(Context context, Intent intent) {
         mContext = context;
@@ -21,6 +25,7 @@ public class BeginnerJapaneseRemoteViewsFactory implements RemoteViewsService.Re
     }
     @Override
     public void onCreate() {
+
         //setup connections/cursors to data source here. Heavy lifting should be deferred to onDataSetchanged()
         //or getViewAt()
 
@@ -47,8 +52,10 @@ public class BeginnerJapaneseRemoteViewsFactory implements RemoteViewsService.Re
             return null;
         }
 
+
         RemoteViews ib = new RemoteViews(mContext.getPackageName(), R.layout.beginner_japanese_widget);
         ib.setImageViewResource(R.id.widget_translator_search_icon, R.drawable.arrow_down);
+        ib.setString(R.id.widget_phrases_romaji_tv, "getRomaji", randomRomajiPhrase);
 
         return ib;
     }

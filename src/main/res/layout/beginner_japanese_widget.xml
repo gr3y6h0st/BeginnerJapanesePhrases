@@ -1,7 +1,11 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/widget_translator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/widget_translator"
     android:background="@color/cardview_light_background"
     android:padding="@dimen/widget_margin">
 
@@ -9,20 +13,46 @@
         android:id="@+id/widget_translator_search_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="8dp"
-        android:src="@android:drawable/ic_menu_search"
-        android:contentDescription="@string/Translator_Search_Icon" />
+        android:layout_gravity="start"
+        android:contentDescription="@string/Translator_Search_Icon"
+        android:src="@android:drawable/ic_menu_search" />
 
     <TextView
         android:id="@+id/widget_translator_search_tv"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_marginStart="8dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@id/widget_translator_search_icon"
-        android:text="@string/search_translate_hint"/>
+        android:layout_toEndOf="@+id/widget_translator_search_icon"
+        android:background="@color/cardview_light_background"
+        android:text="@string/search_translate_hint"
+        android:textSize="20sp" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/widget_phrases_list_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:padding="8dp"
+        android:textSize="20sp"
+        tools:text="Hi" />
+
+    <TextView
+        android:id="@+id/widget_phrases_romaji_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:padding="8dp"
+        android:textSize="20sp"
+        tools:text="Konnichiwa" />
+
+    <ImageButton
+        android:id="@+id/widget_favorite_image_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/favorite_button_content_description"
+        android:padding="8dp"
+        tools:layout_editor_absoluteY="1dp"
+        tools:src="@drawable/ic_favorite" />
+</LinearLayout>
