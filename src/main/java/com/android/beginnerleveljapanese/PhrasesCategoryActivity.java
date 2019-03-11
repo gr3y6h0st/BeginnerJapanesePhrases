@@ -6,6 +6,8 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
@@ -18,9 +20,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.android.beginnerleveljapanese.data.FavoriteData;
+import com.android.beginnerleveljapanese.data.FavoriteDbHelper;
 import com.android.beginnerleveljapanese.data.FavoritesContract;
 import com.android.beginnerleveljapanese.utils.PhraseDataUtils;
 import com.android.beginnerleveljapanese.utils.PhrasesSelectedAdapter;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Queue;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,8 +43,12 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
 
     private static final String TAG = PhrasesCategoryActivity.class.getSimpleName();
     private static final int ID_PHRASES_SELECTED_LOADER = 919;
+    private static final int ID_RESTORE_LOADER = 929;
+
     public String[] mPhrases;
     public String[] mRomaji;
+    public ArrayList<String> favoriteArr = new ArrayList<>();
+
 
     public static final String[] PHRASES_CATEGORY_PROJECTION = {
             FavoritesContract.FavoriteEntry.COLUMN_ENGLISH_TEXT,
@@ -56,7 +68,7 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
     private int mPosition = RecyclerView.NO_POSITION;
     private Cursor mCursor;
     private String mCategoryTitle;
-    SQLiteDatabase mDb;
+    private ArrayList<String> favoriteStatus = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,38 +76,25 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_phrases_category);
         ButterKnife.bind(this);
 
-        if (getIntent() != null) {
-            mCategoryTitle = getIntent().getStringExtra(PHRASE_CATEGORY_SELECTED);
-            String formatted_activity_title = mCategoryTitle + " Phrases";
-            mPhrases = getIntent().getStringArrayExtra(PHRASE_STRING_ARRAY);
-            mRomaji = getIntent().getStringArrayExtra(PHRASE_ROMAJI_TRANSLATION);
-            if (mPhrases == null) {
-                Log.v(TAG, getIntent().getStringExtra(PHRASE_ERROR_CHECK));
-            }
-            setTitle(formatted_activity_title);
+        mCategoryTitle = getIntent().getStringExtra(PHRASE_CATEGORY_SELECTED);
+        String formatted_activity_title = mCategoryTitle + " Phrases";
+        mPhrases = getIntent().getStringArrayExtra(PHRASE_STRING_ARRAY);
+        mRomaji = getIntent().getStringArrayExtra(PHRASE_ROMAJI_TRANSLATION);
+        setTitle(formatted_activity_title);
 
-            if(mCursor == null){
-                //TODO: ADD Category Title COLUMN to Database.
-                //POPULATE DATABASE W/ CURRENT PHRASE CATEGORY DATA
-                PhraseDataUtils.insertPhraseData(this, mCategoryTitle, mPhrases, mRomaji);
-                getSupportLoaderManager().initLoader(ID_PHRASES_SELECTED_LOADER, null, this);
-            } else {
-                mCursor.moveToFirst();
-                if (mCursor.getString(INDEX_PHRASE_CATEGORY).equals(mCategoryTitle)){
-                    getSupportLoaderManager().restartLoader(ID_PHRASES_SELECTED_LOADER, null, this);
-                }
-            }
-
-            //create Adapter instance and set it on RecyclerView using LinearLayoutManager
-            mPhrasesSelectedAdapter = new PhrasesSelectedAdapter(this);
-            phrasesLayoutManager = new LinearLayoutManager(this);
-            phrases_category_rv.setLayoutManager(phrasesLayoutManager);
-            phrases_category_rv.setHasFixedSize(true);
-            phrases_category_rv.setAdapter(mPhrasesSelectedAdapter);
-        } else {
-            Log.v(TAG, "CHECK INTENT BUNDLE. IT MAY BE EMPTY/NULL.");
+        if(isDatabaseEmpty(FavoritesContract.FavoriteEntry.TABLE_NAME_FAVORITE_PHRASES)){
+            PhraseDataUtils.insertNewPhraseData(this, mCategoryTitle, mPhrases, mRomaji);
+            Log.i(TAG, "CURSOR NULL @ onCREATE, calling insertPhraseData.");
+            getSupportLoaderManager().initLoader(ID_PHRASES_SELECTED_LOADER, null, this);
+        } else{
+            getSupportLoaderManager().initLoader(ID_RESTORE_LOADER, null, this);
         }
-
+        //create Adapter instance and set it on RecyclerView using LinearLayoutManager
+        mPhrasesSelectedAdapter = new PhrasesSelectedAdapter(this);
+        phrasesLayoutManager = new LinearLayoutManager(this);
+        phrases_category_rv.setLayoutManager(phrasesLayoutManager);
+        phrases_category_rv.setHasFixedSize(true);
+        phrases_category_rv.setAdapter(mPhrasesSelectedAdapter);
     }
     @NonNull
     @Override
@@ -104,11 +103,21 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
         switch(loaderId){
 
             case ID_PHRASES_SELECTED_LOADER:
-
                 Uri phrase_query_uri = FavoritesContract.FavoriteEntry.CONTENT_URI;
 
-                return new CursorLoader(this,
+                return new CursorLoader(getApplicationContext(),
                         phrase_query_uri,
+                        PHRASES_CATEGORY_PROJECTION,
+                        FavoritesContract.FavoriteEntry.COLUMN_PHRASE_CATEGORY + " = ? ",
+                        new String[] {mCategoryTitle},
+                        FavoritesContract.FavoriteEntry.COLUMN_ENGLISH_TEXT + " ASC");
+
+            case ID_RESTORE_LOADER:
+
+                Uri favoritesQueryUri = FavoritesContract.FavoriteEntry.CONTENT_URI;
+
+                return new CursorLoader(getApplicationContext(),
+                        favoritesQueryUri,
                         PHRASES_CATEGORY_PROJECTION,
                         FavoritesContract.FavoriteEntry.COLUMN_PHRASE_CATEGORY + " = ? ",
                         new String[] {mCategoryTitle},
@@ -118,12 +127,12 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
                 throw new RuntimeException("Loader not implemented: "  + loaderId);
         }
     }
-
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
-        mCursor = data;
-        mPhrasesSelectedAdapter.swapCursor(mCursor);
-        if(mPosition == RecyclerView.NO_POSITION) mPosition = 0;
+        if(data != null) {
+            mCursor = data;
+            mPhrasesSelectedAdapter.swapCursor(mCursor);
+        }
         Log.v(TAG + " onLoaderFinished: " + String.valueOf(loader.getId()), DatabaseUtils.dumpCursorToString(data));
     }
 
@@ -131,7 +140,6 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
         Log.v(TAG + " " + String.valueOf(loader.getId()), "DESTROYING LOADER.");
         mPhrasesSelectedAdapter.swapCursor(null);
-
     }
 
     @Override
@@ -158,5 +166,54 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        //Save Data
+        if(mCursor != null){
+            mCursor.moveToFirst();
+            while(mCursor.moveToNext()){
+                favoriteArr.add(mCursor.getString(mCursor.getColumnIndex(FavoritesContract.FavoriteEntry.COLUMN_FAVORITE_BOOL)));
+                Log.i(TAG, "SAVEDINSTANCE LOADING UP FAVORITE ARRAY" + "\n" +
+                        mCursor.getString(mCursor.getColumnIndex(FavoritesContract.FavoriteEntry.COLUMN_FAVORITE_BOOL)));
+            }
+
+        }else{
+            Log.i(TAG, "CURSOR MAY BE NULL.");
+        }
+
+
+        //Save RV_Adapter Position
+        Parcelable mSavedStatePosition = phrases_category_rv.getLayoutManager().onSaveInstanceState();
+        outState.putParcelable("recyclerViewPosition", mSavedStatePosition);
+        outState.putStringArrayList("favoriteArray", favoriteArr);
+        outState.putStringArray("englishPhrases", mPhrases);
+        outState.putStringArray("romajiPhrases", mRomaji);
+        outState.putString("categoryTitle", mCategoryTitle);
+    }
+
+    /**
+     * Helper Method that checks to see if the current phrase category is present w/in
+     * the local SQLite Db.
+     * @param TableName
+     * @return
+     */
+    public boolean isDatabaseEmpty(String TableName){
+        FavoriteDbHelper favoriteDbHelper = new FavoriteDbHelper(getApplicationContext());
+
+        SQLiteDatabase database = favoriteDbHelper.getReadableDatabase();
+        //check database by CATEGORY.
+        int NoOfRows = (int) DatabaseUtils.queryNumEntries(database,TableName,
+                FavoritesContract.FavoriteEntry.COLUMN_PHRASE_CATEGORY + " = ? ",
+                new String[]{mCategoryTitle});
+
+        if (NoOfRows == 0){
+            return true;
+        }else {
+            return false;
+        }
     }
 }

@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class FavoriteDbHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "favorite_phrases.db";
 
-    public static final int DATABASE_VERSION = 9995;
+    public static final int DATABASE_VERSION = 5991;
 
     public FavoriteDbHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -26,9 +26,6 @@ public class FavoriteDbHelper extends SQLiteOpenHelper {
 
         //execute creation SQL table
         sqLiteDatabase.execSQL(SQL_CREATE_FAVORITES_MAIN_TABLE);
-        //"CREATE TABLE IF NOT EXISTS " + TABLE_ATTENDEE +
-        //" (" + COLUMN_Att_Event_ID + " TEXT," +
-        //COLUMN_Att_Email + " TEXT, PRIMARY KEY(" + COLUMN_Att_Event_ID + "," + COLUMN_Att_Email + "))"
     }
 
     @Override

@@ -28,6 +28,7 @@ import com.android.beginnerleveljapanese.data.HiraganaData;
 import com.android.beginnerleveljapanese.utils.FavoritedPhrasesAdapter;
 import com.android.beginnerleveljapanese.utils.HiraganaAdapter;
 import com.android.beginnerleveljapanese.utils.HiraganaDataUtils;
+import com.android.beginnerleveljapanese.utils.PhraseDataUtils;
 import com.android.beginnerleveljapanese.utils.PhrasesAdapter;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -78,6 +79,7 @@ public class MainActivityFragment extends Fragment implements
 
     private ArrayList<FavoriteData> favoriteDataArrayList = new ArrayList<>();
     private List<HiraganaData> hiraganaDataArrayList = new ArrayList<>();
+    private ArrayList<String> favoriteStatus = new ArrayList<>();
     private FavoriteData favoriteData;
     private String romaji_text;
     private String english_text;
@@ -133,10 +135,10 @@ public class MainActivityFragment extends Fragment implements
         } else {
             Log.v(TAG, "Check Arguments Bundle from MainActivity; it may be null.");
         }
+
         switch(mCurrentSection){
             case 1:
                 mAdView.setVisibility(View.GONE);
-
                 phrase_label_arr = getResources().getStringArray(R.array.phrase_topic_labels);
                 phrasesAdapter = new PhrasesAdapter(getContext(), phrase_label_arr,this);
                 int columnCount = 2;
@@ -152,7 +154,6 @@ public class MainActivityFragment extends Fragment implements
                 mDb = favoriteDbHelper.getReadableDatabase();
                 //initialize adapter
                 favoritedPhrasesAdapter = new FavoritedPhrasesAdapter(getContext(), favoriteDataArrayList, this);
-
                 //set layout manager
                 favoritesLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
                 fragment_main_rv.setLayoutManager(favoritesLayoutManager);
@@ -175,7 +176,6 @@ public class MainActivityFragment extends Fragment implements
                 break;
 
             case 3:
-
                 mAdView.setVisibility(View.GONE);
 
                 String[] hiragana_data_arr = getResources().getStringArray(R.array.hiragana_syllabary);
@@ -191,11 +191,9 @@ public class MainActivityFragment extends Fragment implements
                 fragment_main_rv.setAdapter(hiraganaAdapter);
 
                 break;
-
         }
         return rootView;
     }
-
     private void displayFavoritePhrases(Cursor c) {
 
         try {
@@ -231,7 +229,6 @@ public class MainActivityFragment extends Fragment implements
             case 0:
                 String[] greetings_phrases = getResources().getStringArray(R.array.greetings_phrases);
                 String[] greetings_romaji_phrases = getResources().getStringArray(R.array.greetings_phrases_romaji);
-
                 phrasesCategoryBundle.putStringArray(PHRASE_STRING_ARRAY, greetings_phrases);
                 phrasesCategoryBundle.putStringArray(PHRASE_ROMAJI_TRANSLATION, greetings_romaji_phrases);
 
@@ -323,17 +320,13 @@ public class MainActivityFragment extends Fragment implements
 
                 break;
 
-
             default:
                 phrasesCategoryBundle.putString(PHRASE_ERROR_CHECK, "Haven't created a " +
                         "String Array for this section quite yet." );
-
         }
-
         final Intent phraseCategoryIntent = new Intent(getActivity().getApplicationContext(), PhrasesCategoryActivity.class);
         //load intent extras in bundle
         phraseCategoryIntent.putExtras(phrasesCategoryBundle);
-
         //Start Activity
         startActivity(phraseCategoryIntent);
     }
@@ -343,6 +336,7 @@ public class MainActivityFragment extends Fragment implements
         //dakuon_do nothing for now
     }
 
+    @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int loaderId, Bundle bundle) {
 
@@ -362,7 +356,6 @@ public class MainActivityFragment extends Fragment implements
                 throw new RuntimeException("Loader not implemented: " + loaderId);
         }
     }
-
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
         mCursor = data;
@@ -371,15 +364,12 @@ public class MainActivityFragment extends Fragment implements
             displayFavoritePhrases(data);
         }
     }
-
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
 
     }
-
     @Override
     public void onHiraganaSymbolClicked(int clickedPosition) {
-        //dakuon_do nothing for now
-
+        //do nothing for now
     }
 }

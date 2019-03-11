@@ -11,7 +11,8 @@ import com.google.cloud.translate.Translation;
 public class Translator {
     public static String translate(String translateStart) throws Exception {
         // Instantiates a client
-        /**TODO: For Reviewers: The follow will require a Google Cloud Translate Api Key. Visit
+        /**
+         * TODO: For Reviewers: The follow will require a Google Cloud Translate Api Key. Visit
          * https://cloud.google.com/translate/ to sign up for an API key.
          */
         Translate translate = TranslateOptions.newBuilder()

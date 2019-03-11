@@ -31,7 +31,6 @@ public class PhrasesSelectedAdapter extends RecyclerView.Adapter<PhrasesSelected
     private Context mContext;
     private int mCount;
     private Cursor mCursor;
-    private SQLiteDatabase mDb;
 
     public PhrasesSelectedAdapter(Context context) {
         this.mContext = context;
@@ -57,7 +56,6 @@ public class PhrasesSelectedAdapter extends RecyclerView.Adapter<PhrasesSelected
             favoriteButton.setOnClickListener(this);
             romajiTv.setVisibility(View.GONE);
             FavoriteDbHelper favoriteDbHelper = new FavoriteDbHelper(mContext);
-            mDb = favoriteDbHelper.getWritableDatabase();
         }
 
         //handles click Events when users select a Phrase Category (records position of click).
@@ -105,10 +103,12 @@ public class PhrasesSelectedAdapter extends RecyclerView.Adapter<PhrasesSelected
             //Populate views  w/ proper phrases/images.
             holder.phrasesTv.setText(current_phrases_english);
             holder.romajiTv.setText(current_phrase_romaji);
-            //pull favorites boolean value for phrase from db.
-            final Boolean checkFavorite = Boolean.parseBoolean(mCursor.getString(PhrasesCategoryActivity.INDEX_BOOL_VALUE));
 
+            //pull favorites boolean value for phrase from db.
+            //                favoriteArr.add(mCursor.getString(mCursor.getColumnIndex(FavoritesContract.FavoriteEntry.COLUMN_FAVORITE_BOOL)));
+            final boolean checkFavorite = Boolean.parseBoolean(mCursor.getString(mCursor.getColumnIndex(FavoritesContract.FavoriteEntry.COLUMN_FAVORITE_BOOL)));
             //set icon image based off fav boolean value.
+            Log.i(TAG, "ADAPTER: " + position + " " + holder.getAdapterPosition() + " " + checkFavorite);
             if (!checkFavorite) {
                 holder.favoriteButton.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_favorite_border));
             } else {
@@ -118,7 +118,7 @@ public class PhrasesSelectedAdapter extends RecyclerView.Adapter<PhrasesSelected
             holder.favoriteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Boolean checkFav = checkFavorite;
+                    boolean checkFav = checkFavorite;
                     if (checkFav) {
                         holder.favoriteButton.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_favorite_border));
                         checkFav = false;
@@ -158,7 +158,7 @@ public class PhrasesSelectedAdapter extends RecyclerView.Adapter<PhrasesSelected
         notifyDataSetChanged();
     }
 
-    private void updateFavorite(int position, Boolean check_fav) {
+    private void updateFavorite(int position, boolean check_fav) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(FavoritesContract.FavoriteEntry.COLUMN_FAVORITE_BOOL,
                 String.valueOf(check_fav));
