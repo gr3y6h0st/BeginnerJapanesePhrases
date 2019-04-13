@@ -8,5 +8,14 @@ More eager and curious users can take their learning a step further by accessing
 
 Lastly, the app does provide a English -> Japanese translation feature based off Google's Cloud Translate API. In it's current form, the sole purpose is to provide a simple method of translation for any material not covered by the app or too complex for novice-level Japanese speakers.
 
+## Screenshots
+<img src="https://github.com/gr3y6h0st/BeginnerJapanesePhrases/blob/master/Beginner_Japanese_Phrases_SS.png" width="250"> <img src="https://github.com/gr3y6h0st/BeginnerJapanesePhrases/blob/master/Beginner_Japanese_Favorites_SS.png" width="250"> <img src="https://github.com/gr3y6h0st/BeginnerJapanesePhrases/blob/master/Beginner_Japanese_Hiragana_SS.png" width="250">
+
+<img src="https://github.com/gr3y6h0st/BeginnerJapanesePhrases/blob/master/Beginner_Japanese_Hiragana_GIF_DEMO.gif" width="300"> <img src="https://github.com/gr3y6h0st/BeginnerJapanesePhrases/blob/master/Beginner_Japanese_Phrases_Func_Demo.gif" width="300">
+
+
+
+
+
 ## Getting Started
 
