@@ -1,18 +1,17 @@
 package com.android.beginnerleveljapanese;
 
-import android.annotation.SuppressLint;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.app.NavUtils;
-import android.support.v4.content.AsyncTaskLoader;
-import android.support.v4.content.Loader;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.loader.app.LoaderManager;
+import androidx.core.app.NavUtils;
+import androidx.loader.content.AsyncTaskLoader;
+import androidx.loader.content.Loader;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,6 +30,7 @@ public class TranslateResultsActivity extends AppCompatActivity implements Loade
     @BindView(R.id.translate_original_tv) TextView originalTextTv;
     @BindView(R.id.translate_activity_fab) FloatingActionButton translateSearchFab;
     private Bundle translateBundle = new Bundle();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +78,6 @@ public class TranslateResultsActivity extends AppCompatActivity implements Loade
         }
     }
 
-    @SuppressLint("StaticFieldLeak")
     @NonNull
     @Override
     public Loader<String> onCreateLoader(int id, @Nullable final Bundle args) {
@@ -87,7 +86,7 @@ public class TranslateResultsActivity extends AppCompatActivity implements Loade
         return new AsyncTaskLoader<String>(this) {
             /**
              * mTranslator variable holds the string data throughout app lifecycle to prevent
-             * constant translate async background calls when users  rotate/place app in background.
+             * constant translate async background calls when users rotate/place app in background.
              */
             String mTranslatorData;
 

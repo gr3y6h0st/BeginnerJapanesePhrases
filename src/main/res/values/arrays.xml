@@ -405,7 +405,7 @@
         <item>What time is breakfast served?</item>
         <item>Do you have a safe?</item>
         <item>I have locked myself out of my room.</item>
-        <item>The air conditioner doesn't work well.</item>
+        <item>The air conditioner does not work well.</item>
         <item>What time is checkout?</item>
         <item>Can I leave my bags here?</item>
         <item>hotel</item>
@@ -613,7 +613,7 @@
         <item>Can you give me some medicine for airsickness?</item>
         <item>Can you give me a blanket?</item>
         <item>Can I use my laptop?</item>
-        <item>Where's the luggage claim?</item>
+        <item>Where is the luggage claim?</item>
 
     </string-array>
 

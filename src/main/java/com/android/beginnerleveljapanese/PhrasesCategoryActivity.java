@@ -7,34 +7,30 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.os.PersistableBundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.android.beginnerleveljapanese.data.FavoriteData;
 import com.android.beginnerleveljapanese.data.FavoriteDbHelper;
 import com.android.beginnerleveljapanese.data.FavoritesContract;
 import com.android.beginnerleveljapanese.utils.PhraseDataUtils;
 import com.android.beginnerleveljapanese.utils.PhrasesSelectedAdapter;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Queue;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.android.beginnerleveljapanese.MainActivityFragment.PHRASE_CATEGORY_SELECTED;
-import static com.android.beginnerleveljapanese.MainActivityFragment.PHRASE_ERROR_CHECK;
 import static com.android.beginnerleveljapanese.MainActivityFragment.PHRASE_ROMAJI_TRANSLATION;
 import static com.android.beginnerleveljapanese.MainActivityFragment.PHRASE_STRING_ARRAY;
 
