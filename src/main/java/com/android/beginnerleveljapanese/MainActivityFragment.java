@@ -62,9 +62,9 @@ public class MainActivityFragment extends Fragment implements
     @BindView(R.id.adView)
     AdView mAdView;
 
-    RecyclerView.LayoutManager phrasesLayoutManager;
-    RecyclerView.LayoutManager favoritesLayoutManager;
-    RecyclerView.LayoutManager hiraganaLayoutManager;
+    private RecyclerView.LayoutManager phrasesLayoutManager;
+    private RecyclerView.LayoutManager favoritesLayoutManager;
+    private RecyclerView.LayoutManager hiraganaLayoutManager;
 
     private PhrasesAdapter phrasesAdapter;
     private FavoritedPhrasesAdapter favoritedPhrasesAdapter;
@@ -149,12 +149,15 @@ public class MainActivityFragment extends Fragment implements
             case 2:
                 FavoriteDbHelper favoriteDbHelper = new FavoriteDbHelper(getActivity().getApplicationContext());
                 mDb = favoriteDbHelper.getReadableDatabase();
+
                 //initialize adapter
                 favoritedPhrasesAdapter = new FavoritedPhrasesAdapter(getContext(), favoriteDataArrayList, this);
+
                 //set layout manager
                 favoritesLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
                 fragment_main_rv.setLayoutManager(favoritesLayoutManager);
                 fragment_main_rv.setHasFixedSize(true);
+
                 //set adapter.
                 fragment_main_rv.setAdapter(favoritedPhrasesAdapter);
 
@@ -330,7 +333,7 @@ public class MainActivityFragment extends Fragment implements
 
     @Override
     public void onPhraseClicked(int clickedPosition) {
-        //dakuon_do nothing for now
+        //do nothing for now
     }
 
     @NonNull

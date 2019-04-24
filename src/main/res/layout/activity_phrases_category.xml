@@ -9,6 +9,21 @@
     android:fitsSystemWindows="true"
     tools:context=".PhrasesCategoryActivity">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/favorite_animation_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        app:lottie_fileName="Twitter Favorite Heart.json"
+        app:lottie_loop="false"
+        app:lottie_autoPlay="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_favorite"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/phrases_category_rv"
         android:layout_width="match_parent"

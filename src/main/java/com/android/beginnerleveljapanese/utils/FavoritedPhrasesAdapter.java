@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.android.beginnerleveljapanese.R;
 import com.android.beginnerleveljapanese.data.FavoriteData;
 import com.android.beginnerleveljapanese.data.FavoriteDbHelper;
@@ -52,6 +53,7 @@ public class FavoritedPhrasesAdapter extends RecyclerView.Adapter<FavoritedPhras
 
         @BindView(R.id.phrases_romaji_tv)
         TextView romajiTv;
+
         @BindView(R.id.favorite_image_button)
         ImageButton favoriteButton;
 
@@ -112,11 +114,13 @@ public class FavoritedPhrasesAdapter extends RecyclerView.Adapter<FavoritedPhras
         holder.phrasesTv.setText(current_phrases_english);
         holder.romajiTv.setText(current_phrase_romaji);
 
+        //null check on holder's favorite status.
         if(favoritedPhrasesArray.get(holder.getAdapterPosition()).getFavorite_boolean() != null){
+            //assign holder's current favorite status to checkFavorite
             checkFavorite[0] = favoritedPhrasesArray.get(holder.getAdapterPosition()).getFavorite_boolean();
             Log.v(TAG, String.valueOf(favoritedPhrasesArray.get(holder.getAdapterPosition()).getFavorite_boolean()));
 
-            //check fav boolean
+            //Read value of checkFavorite and assign img drawable accordingly
             if (checkFavorite[0]){
                 holder.favoriteButton.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_favorite));
 
@@ -144,6 +148,10 @@ public class FavoritedPhrasesAdapter extends RecyclerView.Adapter<FavoritedPhras
 
                 } else {
                     addFavoritePhrase();
+                    //TODO: implement Lottie Animation
+                    /**
+                     *Should reveal the LottieAnimation View from GONE -> VISIBLE, then play animation once here.
+                     */
 
                     //set boolean value for array
                     favoritedPhrasesArray.get(holder.getAdapterPosition()).setFavorite_boolean(checkFavorite[0]);
@@ -156,6 +164,9 @@ public class FavoritedPhrasesAdapter extends RecyclerView.Adapter<FavoritedPhras
                 }
             }
 
+            /**
+             * Helper Method to add the current phrase as a Favorite in the database.
+             */
             private void addFavoritePhrase() {
                 checkFavorite[0] = true;
                 ContentValues addFavPhrase = new ContentValues();
@@ -166,6 +177,9 @@ public class FavoritedPhrasesAdapter extends RecyclerView.Adapter<FavoritedPhras
                 Log.d(TAG, "ADDING PHRASE, END BOOL VALUE: " + String.valueOf((addFavPhrase.get(FavoritesContract.FavoriteEntry.COLUMN_FAVORITE_BOOL))));
             }
 
+            /**
+             * Helper method to remove the phrase as a Favorite from database
+             */
             private void deleteFavoritePhrase(){
                 Log.i(TAG, "DELETING PHRASE, STARTING BOOL VALUE: " + String.valueOf(checkFavorite[0]));
                 mDb.delete(FavoritesContract.FavoriteEntry.TABLE_NAME_FAVORITE_PHRASES,

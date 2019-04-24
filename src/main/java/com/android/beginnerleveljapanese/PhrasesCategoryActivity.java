@@ -19,7 +19,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.android.beginnerleveljapanese.data.FavoriteDbHelper;
 import com.android.beginnerleveljapanese.data.FavoritesContract;
 import com.android.beginnerleveljapanese.utils.PhraseDataUtils;
@@ -61,6 +63,10 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
     RecyclerView phrases_category_rv;
     RecyclerView.LayoutManager phrasesLayoutManager;
     PhrasesSelectedAdapter mPhrasesSelectedAdapter;
+
+    @BindView(R.id.favorite_animation_view)
+    LottieAnimationView favoriteAnimationView;
+
     private int mPosition = RecyclerView.NO_POSITION;
     private Cursor mCursor;
     private String mCategoryTitle;
@@ -77,6 +83,7 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
         mPhrases = getIntent().getStringArrayExtra(PHRASE_STRING_ARRAY);
         mRomaji = getIntent().getStringArrayExtra(PHRASE_ROMAJI_TRANSLATION);
         setTitle(formatted_activity_title);
+        favoriteAnimationView.setVisibility(View.GONE);
 
         if(isDatabaseEmpty(FavoritesContract.FavoriteEntry.TABLE_NAME_FAVORITE_PHRASES)){
             PhraseDataUtils.insertNewPhraseData(this, mCategoryTitle, mPhrases, mRomaji);
