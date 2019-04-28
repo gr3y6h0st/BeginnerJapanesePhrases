@@ -143,7 +143,6 @@ public class MainActivityFragment extends Fragment implements
                 fragment_main_rv.setLayoutManager(phrasesLayoutManager);
                 fragment_main_rv.setHasFixedSize(true);
                 fragment_main_rv.setAdapter(phrasesAdapter);
-
                 break;
 
             case 2:
@@ -333,7 +332,7 @@ public class MainActivityFragment extends Fragment implements
 
     @Override
     public void onPhraseClicked(int clickedPosition) {
-        //do nothing for now
+        // TODO:MAKE LOTTIE VISIBLE HERE
     }
 
     @NonNull

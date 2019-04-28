@@ -30,9 +30,16 @@ public class PhrasesSelectedAdapter extends RecyclerView.Adapter<PhrasesSelected
     private Context mContext;
     private int mCount;
     private Cursor mCursor;
+    final private PhrasesSelectedAdapterOnClickListener mOnClickListener;
 
-    public PhrasesSelectedAdapter(Context context) {
+
+    public PhrasesSelectedAdapter(Context context, PhrasesSelectedAdapterOnClickListener listener) {
         this.mContext = context;
+        this.mOnClickListener = listener;
+    }
+
+    public interface PhrasesSelectedAdapterOnClickListener{
+        void markAsFavorite();
     }
 
     public class PhrasesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -127,6 +134,7 @@ public class PhrasesSelectedAdapter extends RecyclerView.Adapter<PhrasesSelected
                         holder.favoriteButton.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_favorite));
                         checkFav = true;
                         updateFavorite(holder.getAdapterPosition(), checkFav);
+                        mOnClickListener.markAsFavorite();
                     }
                 }
             });

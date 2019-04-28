@@ -1,5 +1,6 @@
 package com.android.beginnerleveljapanese;
 
+import android.animation.Animator;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
@@ -37,7 +38,7 @@ import static com.android.beginnerleveljapanese.MainActivityFragment.PHRASE_ROMA
 import static com.android.beginnerleveljapanese.MainActivityFragment.PHRASE_STRING_ARRAY;
 
 public class PhrasesCategoryActivity extends AppCompatActivity implements
-        LoaderManager.LoaderCallbacks<Cursor> {
+        LoaderManager.LoaderCallbacks<Cursor>, PhrasesSelectedAdapter.PhrasesSelectedAdapterOnClickListener {
 
     private static final String TAG = PhrasesCategoryActivity.class.getSimpleName();
     private static final int ID_PHRASES_SELECTED_LOADER = 919;
@@ -93,7 +94,7 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
             getSupportLoaderManager().initLoader(ID_RESTORE_LOADER, null, this);
         }
         //create Adapter instance and set it on RecyclerView using LinearLayoutManager
-        mPhrasesSelectedAdapter = new PhrasesSelectedAdapter(this);
+        mPhrasesSelectedAdapter = new PhrasesSelectedAdapter(this, this);
         phrasesLayoutManager = new LinearLayoutManager(this);
         phrases_category_rv.setLayoutManager(phrasesLayoutManager);
         phrases_category_rv.setHasFixedSize(true);
@@ -218,5 +219,34 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
         }else {
             return false;
         }
+    }
+
+    @Override
+    public void markAsFavorite() {
+
+        Animator.AnimatorListener listener = new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                favoriteAnimationView.setVisibility(View.VISIBLE);
+                favoriteAnimationView.bringToFront();
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                favoriteAnimationView.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        };
+        favoriteAnimationView.addAnimatorListener(listener);
+        favoriteAnimationView.playAnimation();
     }
 }

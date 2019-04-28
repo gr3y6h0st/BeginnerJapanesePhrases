@@ -127,6 +127,7 @@ public class FavoritedPhrasesAdapter extends RecyclerView.Adapter<FavoritedPhras
             } else {
                 holder.favoriteButton.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_favorite_border));
             }
+
         } else{
             Log.v(TAG, "favBool value is null, setting default to false.");
             checkFavorite[0] = false;
@@ -139,25 +140,21 @@ public class FavoritedPhrasesAdapter extends RecyclerView.Adapter<FavoritedPhras
             @Override
             public void onClick(View view) {
                 if (checkFavorite[0]) {
+                    //the current phrase is a Favorite, so remove it.
+                    removeFavoritePhrase();
 
-                    deleteFavoritePhrase();
-                    //check fav is currently false prior to click, change icon to favorite and
-                    // set the checkFav boolean to false.
+                    //update heart drawable to empty/borderless.
                     holder.favoriteButton.setImageDrawable(ContextCompat
                             .getDrawable(mContext, R.drawable.ic_favorite_border));
 
                 } else {
+
                     addFavoritePhrase();
-                    //TODO: implement Lottie Animation
-                    /**
-                     *Should reveal the LottieAnimation View from GONE -> VISIBLE, then play animation once here.
-                     */
 
                     //set boolean value for array
-                    favoritedPhrasesArray.get(holder.getAdapterPosition()).setFavorite_boolean(checkFavorite[0]);
+                    //favoritedPhrasesArray.get(holder.getAdapterPosition()).setFavorite_boolean(checkFavorite[0]);
 
-                    //check fav is currently true prior to click, change icon to border_fav_icon
-                    // (not favorited) and set the favorite state to true.
+                    //update heart drawable to filled(ic_favorite)
                     holder.favoriteButton.setImageDrawable(ContextCompat
                             .getDrawable(mContext, R.drawable.ic_favorite));
 
@@ -180,15 +177,19 @@ public class FavoritedPhrasesAdapter extends RecyclerView.Adapter<FavoritedPhras
             /**
              * Helper method to remove the phrase as a Favorite from database
              */
-            private void deleteFavoritePhrase(){
-                Log.i(TAG, "DELETING PHRASE, STARTING BOOL VALUE: " + String.valueOf(checkFavorite[0]));
-                mDb.delete(FavoritesContract.FavoriteEntry.TABLE_NAME_FAVORITE_PHRASES,
+            private void removeFavoritePhrase(){
+                Log.i(TAG, "UPDATING PHRASE, STARTING BOOL VALUE: " + String.valueOf(checkFavorite[0]));
+                checkFavorite[0] = false;
+                ContentValues removeFavoritePhrase = new ContentValues();
+                removeFavoritePhrase.put(FavoritesContract.FavoriteEntry.COLUMN_FAVORITE_BOOL, String.valueOf(checkFavorite[0]));
+
+
+                mDb.update(FavoritesContract.FavoriteEntry.TABLE_NAME_FAVORITE_PHRASES,
+                        removeFavoritePhrase,
                         FavoritesContract.FavoriteEntry.COLUMN_ENGLISH_TEXT + "=?",
                         new String[]{current_phrases_english});
 
-                //set boolean to false.
-                checkFavorite[0] = false;
-                Log.i(TAG, "DELETING PHRASE, END BOOL VALUE: " + String.valueOf(checkFavorite[0]));
+                Log.i(TAG, "DELETING PHRASE, END BOOL VALUE: " + (checkFavorite[0]));
             }
         });
 
