@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Japanese for Newbies</string>
+    <string name="app_name">Learn Japanese: Phrases &amp; Hiragana</string>
     <string name="tab_text_Phrases">Phrases</string>
     <string name="tab_text_Favorites">Favorites</string>
     <string name="action_settings">Settings</string>
@@ -14,7 +14,7 @@
     <string name="pref_default_display_name">John Smith</string>
     <string name="pref_font_size_label">Font Size (Coming Soon™)</string>
 
-    <!-- Implement in future -->
+    <!-- Font Size: Implement in future -->
     <string-array name="pref_font_size_list_titles">
         <item>Small</item>
         <item>Default</item>
@@ -33,12 +33,15 @@
         <item>Large</item>
     </string-array>
 
-    <string name="appTheme">Dark Theme</string>
-    <string name="appThemeSummary">Switches to a darker UI theme. Helps reduce overall brightness.</string>
-    <string name="search_translate_hint">Japanese Translator</string>
-    <string name="translator_results_label">Translator Results</string>
+    <!-- Theme Settings Resources -->
+    <string name="appTheme">Night Theme</string>
     <string name="sort_key">app_theme</string>
     <string name="dark_theme_default">false</string>
+    <string name="appThemeSummary">Switches to a darker UI theme. Helps reduce overall brightness.</string>
+
+    <!--Widgets Resources-->
+    <string name="search_translate_hint">Japanese Translator</string>
+    <string name="translator_results_label">Translator Results</string>
     <string name="app_widget_text">Quick Search for English to Japanese Translations</string>
     <string name="add_widget">Add widget</string>
     <string name="Translator_Search_Icon">Translator Search Icon for Beginner Japanese</string>

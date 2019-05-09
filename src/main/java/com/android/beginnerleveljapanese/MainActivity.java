@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 import androidx.annotation.NonNull;
 
 import com.google.android.material.tabs.TabLayout;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -87,27 +88,10 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     protected void onStart() {
-        //load up SharedPref everytime user re-enteres/restarts app
+        //load up SharedPref every time user re-enters/restarts app
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String key = this.getResources().getString(R.string.sort_key);
-        if (key.equals(getString(R.string.sort_key))) {
-            String value = String.valueOf(sharedPreferences.getBoolean(key,
-                    Boolean.parseBoolean(getResources().getString(R.string.dark_theme_default))));
-            switch (value) {
-                case "false": {
-                    AppCompatDelegate
-                            .setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    System.out.println(" changed preference to " + value);
-                    break;
-                }
-                case "true": {
-                    AppCompatDelegate
-                            .setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    System.out.println(" changed preference to " + value);
-                    break;
-                }
-            }
-        }
+        onSharedPreferenceChanged(sharedPreferences, key);
         super.onStart();
     }
 
@@ -146,14 +130,14 @@ public class MainActivity extends AppCompatActivity implements
                 case "false": {
                     AppCompatDelegate
                             .setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    System.out.println(" changed preference to " + value);
+                    System.out.println(" SP changed preference to " + value);
                     break;
                 }
                 case "true": {
 
                     AppCompatDelegate
                             .setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    System.out.println(" changed preference to " + value);
+                    System.out.println(" SP changed preference to " + value);
                     break;
                 }
             }

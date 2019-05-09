@@ -27,8 +27,6 @@ import com.android.beginnerleveljapanese.data.HiraganaData;
 import com.android.beginnerleveljapanese.utils.FavoritedPhrasesAdapter;
 import com.android.beginnerleveljapanese.utils.HiraganaAdapter;
 import com.android.beginnerleveljapanese.utils.PhrasesAdapter;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,9 +57,6 @@ public class MainActivityFragment extends Fragment implements
     @BindView(R.id.fragment_main_rv)
     RecyclerView fragment_main_rv;
 
-    @BindView(R.id.adView)
-    AdView mAdView;
-
     private RecyclerView.LayoutManager phrasesLayoutManager;
     private RecyclerView.LayoutManager favoritesLayoutManager;
     private RecyclerView.LayoutManager hiraganaLayoutManager;
@@ -72,7 +67,6 @@ public class MainActivityFragment extends Fragment implements
 
     private String[] phrase_label_arr;
     private int mCurrentSection;
-    private SQLiteDatabase mDb;
 
     private ArrayList<FavoriteData> favoriteDataArrayList = new ArrayList<>();
     private List<HiraganaData> hiraganaDataArrayList = new ArrayList<>();
@@ -135,7 +129,6 @@ public class MainActivityFragment extends Fragment implements
 
         switch(mCurrentSection){
             case 1:
-                mAdView.setVisibility(View.GONE);
                 phrase_label_arr = getResources().getStringArray(R.array.phrase_topic_labels);
                 phrasesAdapter = new PhrasesAdapter(getContext(), phrase_label_arr,this);
                 int columnCount = 2;
@@ -147,7 +140,6 @@ public class MainActivityFragment extends Fragment implements
 
             case 2:
                 FavoriteDbHelper favoriteDbHelper = new FavoriteDbHelper(getActivity().getApplicationContext());
-                mDb = favoriteDbHelper.getReadableDatabase();
 
                 //initialize adapter
                 favoritedPhrasesAdapter = new FavoritedPhrasesAdapter(getContext(), favoriteDataArrayList, this);
@@ -168,14 +160,10 @@ public class MainActivityFragment extends Fragment implements
                     //initiate Loader to populate Cursor
                     getLoaderManager().initLoader(ID_FAVORITES_LOADER, null, this);
                 }
-                //FireBase AdMob request + loader.
-                AdRequest adRequest = new AdRequest.Builder().build();
-                mAdView.loadAd(adRequest);
 
                 break;
 
             case 3:
-                mAdView.setVisibility(View.GONE);
 
                 String[] hiragana_data_arr = getResources().getStringArray(R.array.hiragana_syllabary);
                 String[] hirgana_romaji_arr = getResources().getStringArray(R.array.hiragana_syllabary_english_translate);
@@ -211,7 +199,7 @@ public class MainActivityFragment extends Fragment implements
                 favoriteDataArrayList.add(favoriteData);
             }
         } finally {
-            Log.v(TAG, String.valueOf(fav_bool));
+            Log.v(TAG, "Calling displayFavoritePhrases: " + fav_bool);
         }
         favoritedPhrasesAdapter.notifyPhrasesDataChange(favoriteDataArrayList);
     }
@@ -360,7 +348,7 @@ public class MainActivityFragment extends Fragment implements
         mCursor = data;
 
         if(data != null) {
-            displayFavoritePhrases(data);
+            displayFavoritePhrases(mCursor);
         }
     }
     @Override
