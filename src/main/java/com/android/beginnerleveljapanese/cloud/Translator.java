@@ -2,14 +2,20 @@ package com.android.beginnerleveljapanese.cloud;
 
 // Imports the Google Cloud client library
 
+import android.content.res.AssetManager;
+import android.content.res.Resources;
+
 import com.android.beginnerleveljapanese.BuildConfig;
+import com.android.beginnerleveljapanese.R;
+import com.android.beginnerleveljapanese.TranslateResultsActivity;
 import com.google.cloud.translate.Translate;
 import com.google.cloud.translate.Translate.TranslateOption;
 import com.google.cloud.translate.TranslateOptions;
 import com.google.cloud.translate.Translation;
 
 public class Translator {
-    public static String translate(String translateStart) throws Exception {
+    public static String translate(String translateStart, String targetLocale, String sourceLocale) {
+
         // Instantiates a client
         /**
          * TODO: For Reviewers: The follow will require a Google Cloud Translate Api Key. Visit
@@ -17,19 +23,12 @@ public class Translator {
          */
         Translate translate = TranslateOptions.newBuilder()
                 .setApiKey(BuildConfig.CLOUD_TRANSLATE_API_KEY).build().getService();
-        // The text to translate
-        String translatedText = translateStart;
-
         // Translates some text into Japanese
         Translation translation =
                 translate.translate(
-                        translatedText,
-                        TranslateOption.sourceLanguage("en"),
-                        TranslateOption.targetLanguage("ja"));
-
-
-        System.out.printf("Text: %s%n", translatedText);
-        System.out.printf("Translation: %s%n", translation.getTranslatedText());
+                        translateStart,
+                        TranslateOption.sourceLanguage(sourceLocale),
+                        TranslateOption.targetLanguage(targetLocale));
         return translation.getTranslatedText();
     }
 }

@@ -71,7 +71,11 @@ public class TranslateResultsActivity extends AppCompatActivity implements Loade
     private void handleIntent(Intent intent) {
         if(Intent.ACTION_SEARCH.equals(intent.getAction())){
             String searchQuery = intent.getStringExtra(SearchManager.QUERY);
+            String english_locale = getResources().getString(R.string.translation_locale_label_english);
+            String japanese_locale = getResources().getString(R.string.translation_locale_label_japanese);
             translateBundle.putString("textToTranslate", searchQuery);
+            translateBundle.putString("targetLocale", japanese_locale);
+            translateBundle.putString("sourceLocale", english_locale);
             originalTextTv.setText(searchQuery);
             getSupportLoaderManager().restartLoader(ID_TRANSLATOR_LOADER, translateBundle, this);
             System.out.println("LOADING....");
@@ -101,7 +105,7 @@ public class TranslateResultsActivity extends AppCompatActivity implements Loade
                     System.out.println("Translator data isn't null, delivering data!");
                 } else{
                     forceLoad();
-                    System.out.println("forceloading.");
+                    System.out.println("force loading.");
                 }
             }
 
@@ -110,8 +114,8 @@ public class TranslateResultsActivity extends AppCompatActivity implements Loade
                 String translateStart = args.getString("textToTranslate");
                 System.out.println(translateStart);
                 try{
-                    //where background thread runs Translator method.
-                   return translate(translateStart);
+                    //where background thread runs Translator translate() method.
+                   return translate(translateStart, args.getString("targetLocale"), args.getString("sourceLocale"));
 
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.loader.app.LoaderManager;
@@ -21,7 +20,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
 import com.airbnb.lottie.LottieAnimationView;
 import com.android.beginnerleveljapanese.data.FavoriteDbHelper;
 import com.android.beginnerleveljapanese.data.FavoritesContract;
@@ -38,7 +36,8 @@ import static com.android.beginnerleveljapanese.MainActivityFragment.PHRASE_ROMA
 import static com.android.beginnerleveljapanese.MainActivityFragment.PHRASE_STRING_ARRAY;
 
 public class PhrasesCategoryActivity extends AppCompatActivity implements
-        LoaderManager.LoaderCallbacks<Cursor>, PhrasesSelectedAdapter.PhrasesSelectedAdapterOnClickListener {
+        LoaderManager.LoaderCallbacks<Cursor>,
+        PhrasesSelectedAdapter.PhrasesSelectedAdapterOnClickListener {
 
     private static final String TAG = PhrasesCategoryActivity.class.getSimpleName();
     private static final int ID_PHRASES_SELECTED_LOADER = 919;
@@ -47,7 +46,6 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
     public String[] mPhrases;
     public String[] mRomaji;
     public ArrayList<String> favoriteArr = new ArrayList<>();
-
 
     public static final String[] PHRASES_CATEGORY_PROJECTION = {
             FavoritesContract.FavoriteEntry.COLUMN_ENGLISH_TEXT,
@@ -62,23 +60,19 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
 
     @BindView(R.id.phrases_category_rv)
     RecyclerView phrases_category_rv;
-    RecyclerView.LayoutManager phrasesLayoutManager;
-    PhrasesSelectedAdapter mPhrasesSelectedAdapter;
-
     @BindView(R.id.favorite_animation_view)
     LottieAnimationView favoriteAnimationView;
-
+    RecyclerView.LayoutManager phrasesLayoutManager;
+    PhrasesSelectedAdapter mPhrasesSelectedAdapter;
     private int mPosition = RecyclerView.NO_POSITION;
     private Cursor mCursor;
     private String mCategoryTitle;
-    private ArrayList<String> favoriteStatus = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phrases_category);
         ButterKnife.bind(this);
-
         mCategoryTitle = getIntent().getStringExtra(PHRASE_CATEGORY_SELECTED);
         String formatted_activity_title = mCategoryTitle + " Phrases";
         mPhrases = getIntent().getStringArrayExtra(PHRASE_STRING_ARRAY);
@@ -137,12 +131,12 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
             mCursor = data;
             mPhrasesSelectedAdapter.swapCursor(mCursor);
         }
-        Log.v(TAG + " onLoaderFinished: " + String.valueOf(loader.getId()), DatabaseUtils.dumpCursorToString(data));
+        Log.v(TAG + " onLoaderFinished: " + loader.getId(), DatabaseUtils.dumpCursorToString(data));
     }
 
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-        Log.v(TAG + " " + String.valueOf(loader.getId()), "DESTROYING LOADER.");
+        Log.v(TAG + " " + loader.getId(), "DESTROYING LOADER.");
         mPhrasesSelectedAdapter.swapCursor(null);
     }
 
@@ -184,11 +178,9 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
                 Log.i(TAG, "SAVEDINSTANCE LOADING UP FAVORITE ARRAY" + "\n" +
                         mCursor.getString(mCursor.getColumnIndex(FavoritesContract.FavoriteEntry.COLUMN_FAVORITE_BOOL)));
             }
-
-        }else{
+        } else{
             Log.i(TAG, "CURSOR MAY BE NULL.");
         }
-
 
         //Save RV_Adapter Position
         Parcelable mSavedStatePosition = phrases_category_rv.getLayoutManager().onSaveInstanceState();
@@ -214,11 +206,7 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
                 FavoritesContract.FavoriteEntry.COLUMN_PHRASE_CATEGORY + " = ? ",
                 new String[]{mCategoryTitle});
 
-        if (NoOfRows == 0){
-            return true;
-        }else {
-            return false;
-        }
+        return NoOfRows == 0;
     }
 
     @Override

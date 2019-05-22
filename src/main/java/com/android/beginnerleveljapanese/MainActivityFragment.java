@@ -30,6 +30,7 @@ import com.android.beginnerleveljapanese.utils.PhrasesAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -181,6 +182,7 @@ public class MainActivityFragment extends Fragment implements
         }
         return rootView;
     }
+
     private void displayFavoritePhrases(Cursor c) {
 
         try {
@@ -311,7 +313,7 @@ public class MainActivityFragment extends Fragment implements
                 phrasesCategoryBundle.putString(PHRASE_ERROR_CHECK, "Haven't created a " +
                         "String Array for this section quite yet." );
         }
-        final Intent phraseCategoryIntent = new Intent(getActivity().getApplicationContext(), PhrasesCategoryActivity.class);
+        final Intent phraseCategoryIntent = new Intent(Objects.requireNonNull(getActivity()).getApplicationContext(), PhrasesCategoryActivity.class);
         //load intent extras in bundle
         phraseCategoryIntent.putExtras(phrasesCategoryBundle);
         //Start Activity
@@ -320,28 +322,23 @@ public class MainActivityFragment extends Fragment implements
 
     @Override
     public void onPhraseClicked(int clickedPosition) {
-        // TODO:MAKE LOTTIE VISIBLE HERE
     }
 
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int loaderId, Bundle bundle) {
 
-        switch (loaderId){
-
-            case ID_FAVORITES_LOADER:
-                //Uri to query all data for category
-                Uri favoritesQueryUri = FavoritesContract.FavoriteEntry.CONTENT_URI;
-
-                return new CursorLoader(getContext(),
-                        favoritesQueryUri,
-                        PhrasesCategoryActivity.PHRASES_CATEGORY_PROJECTION,
-                        FavoritesContract.FavoriteEntry.COLUMN_FAVORITE_BOOL + " = ?",
-                        new String[] {"true"},
-                        null);
-            default:
-                throw new RuntimeException("Loader not implemented: " + loaderId);
+        if (loaderId == ID_FAVORITES_LOADER) {
+            //Uri to query all data for category
+            Uri favoritesQueryUri = FavoritesContract.FavoriteEntry.CONTENT_URI;
+            return new CursorLoader(Objects.requireNonNull(getContext()),
+                    favoritesQueryUri,
+                    PhrasesCategoryActivity.PHRASES_CATEGORY_PROJECTION,
+                    FavoritesContract.FavoriteEntry.COLUMN_FAVORITE_BOOL + " = ?",
+                    new String[]{"true"},
+                    null);
         }
+        throw new RuntimeException("Loader not implemented: " + loaderId);
     }
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
