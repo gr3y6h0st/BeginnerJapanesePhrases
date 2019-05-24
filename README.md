@@ -11,6 +11,6 @@ Lastly, the app does provide a English -> Japanese translation feature based off
 ## Screenshots
 <img src="https://github.com/gr3y6h0st/BeginnerJapanesePhrases/blob/master/Beginner_Japanese_Phrases_SS.png" width="250"> <img src="https://github.com/gr3y6h0st/BeginnerJapanesePhrases/blob/master/Beginner_Japanese_Favorites_SS.png" width="250"> <img src="https://github.com/gr3y6h0st/BeginnerJapanesePhrases/blob/master/Beginner_Japanese_Hiragana_SS.png" width="250">
 
-<img src="https://github.com/gr3y6h0st/BeginnerJapanesePhrases/blob/master/Beginner_Japanese_Phrases_Func_Demo.gif" width="300"> <img src="https://github.com/gr3y6h0st/BeginnerJapanesePhrases/blob/master/Beginner_Japanese_Hiragana_GIF_DEMO.gif" width="300"> 
+<img src="https://github.com/gr3y6h0st/BeginnerJapanesePhrases/blob/master/BeginnerJapanese_Favorite_Animations_Demo.gif" width="300"> <img src="https://github.com/gr3y6h0st/BeginnerJapanesePhrases/blob/master/Beginner_Japanese_Hiragana_GIF_DEMO.gif" width="300"> 
 
 ## Getting Started
