@@ -172,7 +172,6 @@ public class FavoritedPhrasesAdapter extends RecyclerView.Adapter<FavoritedPhras
                 addFavPhrase.put(FavoritesContract.FavoriteEntry.COLUMN_FAVORITE_BOOL, String.valueOf(checkFavorite[0]));
                 mDb.insert(FavoritesContract.FavoriteEntry.TABLE_NAME_FAVORITE_PHRASES, null, addFavPhrase);
                 Log.d(TAG, "ADDING PHRASE, END BOOL VALUE: " + String.valueOf((addFavPhrase.get(FavoritesContract.FavoriteEntry.COLUMN_FAVORITE_BOOL))));
-                mDb.endTransaction();
             }
 
             /**
