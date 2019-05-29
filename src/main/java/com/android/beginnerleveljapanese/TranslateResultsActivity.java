@@ -3,26 +3,30 @@ package com.android.beginnerleveljapanese;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import androidx.loader.app.LoaderManager;
-import androidx.core.app.NavUtils;
-import androidx.loader.content.AsyncTaskLoader;
-import androidx.loader.content.Loader;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.AsyncTaskLoader;
+import androidx.loader.content.Loader;
+
+import com.android.beginnerleveljapanese.cloud.Translator;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.android.beginnerleveljapanese.MainActivity.ID_TRANSLATOR_LOADER;
 import static com.android.beginnerleveljapanese.cloud.Translator.translate;
+import static com.android.beginnerleveljapanese.cloud.Translator.translateText;
 
 public class TranslateResultsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String> {
 
@@ -115,7 +119,14 @@ public class TranslateResultsActivity extends AppCompatActivity implements Loade
                 System.out.println(translateStart);
                 try{
                     //where background thread runs Translator translate() method.
-                   return translate(translateStart, args.getString("targetLocale"), args.getString("sourceLocale"));
+                   return translateText(
+                           getApplicationContext(),
+                           "beginner-japanese-app",
+                           "global",
+                           translateStart,
+                           args.getString("sourceLocale"),
+                           args.getString("targetLocale")
+                           );
 
                 } catch (Exception e) {
                     e.printStackTrace();
