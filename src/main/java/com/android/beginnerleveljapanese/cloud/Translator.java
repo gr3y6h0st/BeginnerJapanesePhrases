@@ -16,7 +16,6 @@ import com.google.cloud.translate.v3beta1.TranslateTextRequest;
 import com.google.cloud.translate.v3beta1.TranslateTextResponse;
 import com.google.cloud.translate.v3beta1.TranslationServiceClient;
 import com.google.cloud.translate.v3beta1.TranslationServiceSettings;
-
 import java.io.IOException;
 
 
@@ -27,12 +26,11 @@ public class Translator {
                 .setApiKey(BuildConfig.CLOUD_TRANSLATE_API_KEY).build().getService();*/
 
         //get Service Account instead of API Key.
-        GoogleCredentials credentials = GoogleCredentials.fromStream(context.getAssets().open("Service JSON filename HERE"));
+        GoogleCredentials credentials = GoogleCredentials.fromStream(context.getAssets().open("beginner-japanese-app-70e338ed115f.json"));
         FixedCredentialsProvider credentialsProvider = FixedCredentialsProvider.create(credentials);
 
 
-        Translate translate = null;
-        translate = TranslateOptions.newBuilder().setCredentials(credentials).build().getService();
+        Translate translate = TranslateOptions.newBuilder().setCredentials(credentials).build().getService();
 
         //Translates some text into Japanese
         Translation translation =
@@ -47,18 +45,14 @@ public class Translator {
     public static String translateText(Context context, String projectId, String location, String text, String sourceLanguageCode, String targetLanguageCode) {
 
         GoogleCredentials credentials;
-        TranslationServiceSettings translationServiceSettings;
+
 
         try {
-            credentials = GoogleCredentials.fromStream(context.getAssets().open("Service JSON filename HERE"));
+            credentials = GoogleCredentials.fromStream(context.getAssets().open("beginner-japanese-app-70e338ed115f.json"));
             CredentialsProvider credentialsProvider = FixedCredentialsProvider.create(credentials);
 
-            translationServiceSettings = TranslationServiceSettings.newBuilder().setCredentialsProvider(credentialsProvider).build();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try (TranslationServiceClient translationServiceClient = TranslationServiceClient.create(translationServiceSettings)){
+            TranslationServiceSettings translationServiceSettings = TranslationServiceSettings.newBuilder().setCredentialsProvider(credentialsProvider).build();
+            TranslationServiceClient translationServiceClient = TranslationServiceClient.create(translationServiceSettings);
 
             LocationName locationName =
                     LocationName.newBuilder().setProject(projectId).setLocation(location).build();
