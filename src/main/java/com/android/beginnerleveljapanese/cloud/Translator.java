@@ -27,7 +27,7 @@ public class Translator {
                 .setApiKey(BuildConfig.CLOUD_TRANSLATE_API_KEY).build().getService();*/
 
         //get Service Account instead of API Key.
-        GoogleCredentials credentials = GoogleCredentials.fromStream(context.getAssets().open("BJA-06965c1b74db.json"));
+        GoogleCredentials credentials = GoogleCredentials.fromStream(context.getAssets().open("Service JSON filename HERE"));
         FixedCredentialsProvider credentialsProvider = FixedCredentialsProvider.create(credentials);
 
 
@@ -50,7 +50,7 @@ public class Translator {
         TranslationServiceSettings translationServiceSettings;
 
         try {
-            credentials = GoogleCredentials.fromStream(context.getAssets().open("BJA-06965c1b74db.json"));
+            credentials = GoogleCredentials.fromStream(context.getAssets().open("Service JSON filename HERE"));
             CredentialsProvider credentialsProvider = FixedCredentialsProvider.create(credentials);
 
             translationServiceSettings = TranslationServiceSettings.newBuilder().setCredentialsProvider(credentialsProvider).build();
