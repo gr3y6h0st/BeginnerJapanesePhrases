@@ -1,12 +1,9 @@
 <resources>
-    <string name="app_name">Learn Japanese: Phrases &amp; Hiragana</string>
+    <string name="app_name">Learn Japanese: Vocab, Phrases &amp; Hiragana</string>
     <string name="tab_text_Phrases">Phrases</string>
     <string name="tab_text_Favorites">Favorites</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_settings">Settings</string>
-
-    <!-- Admob Strings -->
-    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 
     <!-- Strings related to Settings -->
     <string name="pref_header_appearance">Appearance</string>

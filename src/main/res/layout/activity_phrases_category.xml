@@ -7,7 +7,7 @@
     android:id="@+id/specific_phrase_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:fitsSystemWindows="true"
-    tools:context=".PhrasesCategoryActivity">
+    tools:context="com.jaydroid.beginnerleveljapanese.PhrasesCategoryActivity">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/favorite_animation_view"
