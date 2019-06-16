@@ -111,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements
             Intent settingsActivityIntent = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(settingsActivityIntent);
             return true;
+
         } else if (menuItemClicked == R.id.menu_search_icon){
             onSearchRequested();
             return true;

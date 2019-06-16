@@ -5,7 +5,7 @@ apply plugin: 'com.google.gms.google-services'
 android {
     signingConfigs {
         releaseConfig {
-            keyAlias 'Udacity'
+            keyAlias 'Fake'
             keyPassword 'FakePassword'
             storeFile file("$rootDir/beginnerJapanese")
             storePassword 'FakePasswordstuff'
@@ -13,7 +13,7 @@ android {
     }
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.jaydroid.beginnnerleveljapanese"
+        applicationId "com.jaydroid.beginnerleveljapanese"
         minSdkVersion 26
         targetSdkVersion 28
         versionCode 1

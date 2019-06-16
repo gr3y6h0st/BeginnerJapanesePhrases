@@ -1,7 +1,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@android:color/black"
+    android:background="@android:color/transparent"
     android:id="@+id/widget_translator"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -28,29 +28,29 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:layout_gravity="center_vertical"
-            android:background="@color/cardview_light_background"
+            android:background="@android:color/white"
             android:text="@string/search_translate_hint"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:background="@color/cardview_light_background"
-        android:layout_gravity="center_vertical"
-        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/widget_phrases_list_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            android:padding="8dp"
-            android:textSize="20sp"
-            tools:text="Hi" />
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_gravity="center"
+            android:padding="4dp"
+            android:textSize="18sp"
+            tools:text="Good Afternoon" />
 
         <TextView
             android:id="@+id/widget_phrases_romaji_tv"
@@ -58,11 +58,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:padding="8dp"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_horizontal"
-            android:textSize="20sp"
+            android:padding="4dp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="18sp"
             tools:text="Konnichiwa" />
 
         <ImageButton
@@ -71,8 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="center_horizontal"
             android:contentDescription="@string/favorite_button_content_description"
             tools:src="@drawable/ic_favorite" />
     </LinearLayout>

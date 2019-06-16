@@ -77,7 +77,7 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
     @Override
     public HiraganaViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
 
-        int layoutIdForListItem = R.layout.hirgana_syllabary_list_item;
+        int layoutIdForListItem = R.layout.hiragana_syllabary_list_item;
 
         boolean shouldAttachToParentImmediately = false;
 

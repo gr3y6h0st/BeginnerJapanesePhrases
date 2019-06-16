@@ -3,6 +3,7 @@ package com.jaydroid.beginnerleveljapanese;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,7 +27,8 @@ import butterknife.ButterKnife;
 import static com.jaydroid.beginnerleveljapanese.MainActivity.ID_TRANSLATOR_LOADER;
 import static com.jaydroid.beginnerleveljapanese.cloud.Translator.translateText;
 
-public class TranslateResultsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String> {
+public class TranslateResultsActivity extends AppCompatActivity
+        implements LoaderManager.LoaderCallbacks<String> {
 
     @BindView(R.id.translate_test_tv) TextView translatedTextTv;
     @BindView(R.id.translate_original_tv) TextView originalTextTv;
@@ -59,8 +61,7 @@ public class TranslateResultsActivity extends AppCompatActivity implements Loade
         }
     }
 
-    @Override
-    protected void onNewIntent(Intent intent) {
+    public void onNewIntent(Intent intent) {
         setIntent(intent);
         handleIntent(intent);
     }
@@ -79,6 +80,7 @@ public class TranslateResultsActivity extends AppCompatActivity implements Loade
             translateBundle.putString("targetLocale", japanese_locale);
             translateBundle.putString("sourceLocale", english_locale);
             originalTextTv.setText(searchQuery);
+            Log.v("TESTING SEARCH QUERY: ", searchQuery);
             getSupportLoaderManager().restartLoader(ID_TRANSLATOR_LOADER, translateBundle, this);
             System.out.println("LOADING....");
         }

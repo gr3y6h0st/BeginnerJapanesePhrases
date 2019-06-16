@@ -37,7 +37,7 @@
     <string name="appThemeSummary">Switches to a darker UI theme. Helps reduce overall brightness.</string>
 
     <!--Widgets Resources-->
-    <string name="search_translate_hint">Japanese Translator</string>
+    <string name="search_translate_hint">Search Translation</string>
     <string name="translator_results_label">Translator Results</string>
     <string name="app_widget_text">Quick Search for English to Japanese Translations</string>
     <string name="add_widget">Add widget</string>
