@@ -1,8 +1,10 @@
 package com.jaydroid.beginnerleveljapanese;
 
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +19,7 @@ import androidx.appcompat.widget.Toolbar;
  * A {@link android.preference.PreferenceActivity} which implements and proxies the necessary calls
  * to be used with AppCompat.
  */
-public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
+public abstract class AppCompatPreferenceActivity extends PreferenceActivity{
 
     private AppCompatDelegate mDelegate;
 
@@ -26,6 +28,7 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
         getDelegate().installViewFactory();
         getDelegate().onCreate(savedInstanceState);
         super.onCreate(savedInstanceState);
+
     }
 
     @Override

@@ -10,13 +10,13 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
     public static final int ID_TRANSLATOR_LOADER = 19;
-    private FirebaseAnalytics mFirebaseAnalytics;
+    public FirebaseAnalytics mFirebaseAnalytics;
 
 
     /**
@@ -44,12 +44,15 @@ public class MainActivity extends AppCompatActivity implements
      */
     @BindView(R.id.container) ViewPager mViewPager;
     @BindView(R.id.tabs) TabLayout tabLayout;
-    //@BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.toolbar) Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setSupportActionBar(toolbar);
+
         ButterKnife.bind(this);
 
         //Firebase Analytics Instance
@@ -87,16 +90,24 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onStart() {
         //load up SharedPref every time user re-enters/restarts app
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String key = this.getResources().getString(R.string.sort_key);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String key = getApplicationContext().getResources().getString(R.string.sort_key);
         onSharedPreferenceChanged(sharedPreferences, key);
         super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        PreferenceManager.getDefaultSharedPreferences(this)
+                .unregisterOnSharedPreferenceChangeListener(this);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        menu.getItem(R.id.action_settings).setVisible(true);
         return true;
     }
 
@@ -142,6 +153,8 @@ public class MainActivity extends AppCompatActivity implements
             }
         }
     }
+
+
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to

@@ -41,7 +41,6 @@ public class TranslateResultsActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_translate_results);
         ButterKnife.bind(this);
-        onSearchRequested();
         setupActionBar();
         handleIntent(getIntent());
 

@@ -3,6 +3,7 @@ package com.jaydroid.beginnerleveljapanese;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.preference.PreferenceManager;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.NavUtils;
 
 import java.util.List;
@@ -29,12 +31,14 @@ import java.util.List;
  * href="http://developer.android.com/guide/topics/ui/settings.html">Settings
  * API Guide</a> for more information on developing a Settings UI.
  */
-public class SettingsActivity extends AppCompatPreferenceActivity {
+public class SettingsActivity extends AppCompatPreferenceActivity implements
+        SharedPreferences.OnSharedPreferenceChangeListener{
     /**
      * A preference value change listener that updates the preference's summary
      * to reflect its new value.
      */
     private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
+
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
             String stringValue = value.toString();
@@ -56,14 +60,24 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 switch (stringValue) {
                     case "true":
                         preference.setSummary("On");
+                        AppCompatDelegate
+                                .setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                         break;
+
                     case "false":
                         preference.setSummary("Off");
+                        AppCompatDelegate
+                                .setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                        break;
                 }
             }
             return true;
         }
+
     };
+
+
+
 
     /**
      * Helper method to determine if the device has an extra-large screen. For
@@ -92,15 +106,59 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
                 PreferenceManager
                         .getDefaultSharedPreferences(preference.getContext())
-                        .getBoolean(preference.getKey(), false));
-
+                        .getBoolean(preference.getKey(), Boolean.parseBoolean(preference.getContext()
+                                .getResources().getString(R.string.dark_theme_default))));
     }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String key = getApplicationContext().getResources().getString(R.string.sort_key);
+        onSharedPreferenceChanged(sharedPreferences, key);
         setupActionBar();
-        setTheme(R.style.AppTheme);
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (key.equals(getString(R.string.sort_key))) {
+            String value = String.valueOf(sharedPreferences.getBoolean(key,
+                    Boolean.parseBoolean(getResources().getString(R.string.dark_theme_default))));
+            switch (value) {
+                case "false": {
+                    AppCompatDelegate
+                            .setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    System.out.println(" SP changed preference to in Settings Activity to " + value);
+                    break;
+                }
+                case "true": {
+                    AppCompatDelegate
+                            .setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    System.out.println(" SP changed preference in Settings Activity to " + value);
+                    break;
+                }
+            }
+        }
+    }
+
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //load up SharedPref every time user re-enters/restarts app
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String key = getApplicationContext().getResources().getString(R.string.sort_key);
+        onSharedPreferenceChanged(sharedPreferences, key);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        PreferenceManager.getDefaultSharedPreferences(this)
+                .unregisterOnSharedPreferenceChangeListener(this);
     }
 
     /**
