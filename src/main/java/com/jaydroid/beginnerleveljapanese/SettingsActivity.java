@@ -13,12 +13,16 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.NavUtils;
 
-import java.util.List;
+import com.jaydroid.beginnerleveljapanese.data.SharedPref;
+
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -31,215 +35,61 @@ import java.util.List;
  * href="http://developer.android.com/guide/topics/ui/settings.html">Settings
  * API Guide</a> for more information on developing a Settings UI.
  */
-public class SettingsActivity extends AppCompatPreferenceActivity implements
-        SharedPreferences.OnSharedPreferenceChangeListener{
-    /**
-     * A preference value change listener that updates the preference's summary
-     * to reflect its new value.
-     */
-    private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
+public class SettingsActivity extends AppCompatActivity {
 
-        @Override
-        public boolean onPreferenceChange(Preference preference, Object value) {
-            String stringValue = value.toString();
-
-            if (preference instanceof ListPreference) {
-                // For list preferences, look up the correct display value in
-                // the preference's 'entries' list.
-                ListPreference listPreference = (ListPreference) preference;
-                int index = listPreference.findIndexOfValue(stringValue);
-
-                // Set the summary to reflect the new value.
-                preference.setSummary(
-                        index >= 0
-                                ? listPreference.getEntries()[index]
-                                : null);
-            } else {
-                // For all other preferences, set the summary to the value's
-                // simple string representation.
-                switch (stringValue) {
-                    case "true":
-                        preference.setSummary("On");
-                        AppCompatDelegate
-                                .setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                        break;
-
-                    case "false":
-                        preference.setSummary("Off");
-                        AppCompatDelegate
-                                .setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                        break;
-                }
-            }
-            return true;
-        }
-
-    };
-
-
-
-
-    /**
-     * Helper method to determine if the device has an extra-large screen. For
-     * example, 10" tablets are extra-large.
-     */
-    private static boolean isXLargeTablet(Context context) {
-        return (context.getResources().getConfiguration().screenLayout
-                & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_XLARGE;
-    }
-
-    /**
-     * Binds a preference's summary to its value. More specifically, when the
-     * preference's value is changed, its summary (line of text below the
-     * preference title) is updated to reflect the value. The summary is also
-     * immediately updated upon calling this method. The exact display format is
-     * dependent on the type of preference.
-     *
-     * @see #sBindPreferenceSummaryToValueListener
-     */
-    private static void bindPreferenceSummaryToValue(Preference preference) {
-        // Set the listener to watch for value changes.
-        preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
-
-        // Trigger the listener immediately with the preference's
-        // current value.
-        sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
-                PreferenceManager
-                        .getDefaultSharedPreferences(preference.getContext())
-                        .getBoolean(preference.getKey(), Boolean.parseBoolean(preference.getContext()
-                                .getResources().getString(R.string.dark_theme_default))));
-    }
-
-
+    private SharedPref sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sharedPref = new SharedPref(this);
+        setTheme(R.style.AppTheme);
+
+        if(sharedPref.loadNightModeState()){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+        else AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String key = getApplicationContext().getResources().getString(R.string.sort_key);
-        onSharedPreferenceChanged(sharedPreferences, key);
+
+        setContentView(R.layout.activity_settings);
+
+        Switch nightModeSwitch = findViewById(R.id.night_mode_switch);
+
+        if(sharedPref.loadNightModeState()){
+            nightModeSwitch.setChecked(true);
+        }
         setupActionBar();
-    }
 
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if (key.equals(getString(R.string.sort_key))) {
-            String value = String.valueOf(sharedPreferences.getBoolean(key,
-                    Boolean.parseBoolean(getResources().getString(R.string.dark_theme_default))));
-            switch (value) {
-                case "false": {
-                    AppCompatDelegate
-                            .setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    System.out.println(" SP changed preference to in Settings Activity to " + value);
-                    break;
-                }
-                case "true": {
-                    AppCompatDelegate
-                            .setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    System.out.println(" SP changed preference in Settings Activity to " + value);
-                    break;
+        nightModeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    sharedPref.setNightNodeState(true);
+                    recreate();
+                } else{
+                    sharedPref.setNightNodeState(false);
+                    recreate();
                 }
             }
-        }
+        });
     }
 
 
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        //load up SharedPref every time user re-enters/restarts app
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String key = getApplicationContext().getResources().getString(R.string.sort_key);
-        onSharedPreferenceChanged(sharedPreferences, key);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        PreferenceManager.getDefaultSharedPreferences(this)
-                .unregisterOnSharedPreferenceChangeListener(this);
-    }
-
-    /**
-     * Set up the {@link android.app.ActionBar}, if the API is available.
-     */
-    private void setupActionBar() {
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            // Show the Up button in the action bar.
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.getThemedContext();
-        }
-    }
-
-    @Override
-    public boolean onMenuItemSelected(int featureId, MenuItem item) {
-        int id = item.getItemId();
-        if (id == android.R.id.home) {
-            if (!super.onMenuItemSelected(featureId, item)) {
-                NavUtils.navigateUpFromSameTask(this);
+        private void setupActionBar() {
+            ActionBar actionBar = getSupportActionBar();
+            if (actionBar != null) {
+                // Show the Up button in the action bar.
+                actionBar.setDisplayHomeAsUpEnabled(true);
+                actionBar.getThemedContext();
             }
-            return true;
-        }
-        return super.onMenuItemSelected(featureId, item);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean onIsMultiPane() {
-        return isXLargeTablet(this);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public void onBuildHeaders(List<Header> target) {
-        loadHeadersFromResource(R.xml.pref_headers, target);
-    }
-
-    /**
-     * This method stops fragment injection in malicious applications.
-     * Make sure to deny any unknown fragments here.
-     */
-    protected boolean isValidFragment(String fragmentName) {
-        return PreferenceFragment.class.getName().equals(fragmentName)
-                || GeneralPreferenceFragment.class.getName().equals(fragmentName);
-    }
-
-    /**
-     * This fragment shows general preferences only. It is used when the
-     * activity is showing a two-pane settings UI.
-     */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static class GeneralPreferenceFragment extends PreferenceFragment {
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.pref_appearance);
-            setHasOptionsMenu(true);
-
-
-            // Bind the summaries of EditText/List/Dialog/Ringtone preferences
-            // to their values. When their values change, their summaries are
-            // updated to reflect the new value, per the Android Design
-            // guidelines.
-            bindPreferenceSummaryToValue(findPreference("app_theme"));
         }
 
         @Override
         public boolean onOptionsItemSelected(MenuItem item) {
             int id = item.getItemId();
-            if (id == android.R.id.home) {
-                startActivity(new Intent(getActivity(), SettingsActivity.class));
-                return true;
+            if( id == android.R.id.home) {
+                NavUtils.navigateUpFromSameTask(this);
             }
             return super.onOptionsItemSelected(item);
         }
-    }
-
 }
+
