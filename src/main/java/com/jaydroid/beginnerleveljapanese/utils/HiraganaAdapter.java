@@ -833,10 +833,7 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
         AssetFileDescriptor sound = mContext.getResources().openRawResourceFd(audioID);
         //Log.i(TAG, "SOUND LENGTH: " + sound.getDeclaredLength());
         try {
-            hiraganaMediaPlayer.setDataSource(
-                    sound.getFileDescriptor(),
-                    sound.getStartOffset(),
-                    sound.getLength());
+            hiraganaMediaPlayer.setDataSource(sound.getFileDescriptor(),sound.getStartOffset(),sound.getLength());
             hiraganaMediaPlayer.prepare();
         } catch (IOException e) {
             e.printStackTrace();

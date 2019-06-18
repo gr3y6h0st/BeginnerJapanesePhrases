@@ -32,7 +32,7 @@
 
     <!-- Theme Settings Resources -->
     <string name="appTheme">Night Theme</string>
-    <string name="sort_key">NightMode</string>
+    <string name="sort_key">app_theme</string>
     <string name="dark_theme_default">false</string>
     <string name="appThemeSummary">Switches to a darker UI theme. Helps reduce overall brightness and battery drain.</string>
 

@@ -1,9 +1,12 @@
 package com.jaydroid.beginnerleveljapanese;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -16,12 +19,12 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.jaydroid.beginnerleveljapanese.data.SharedPref;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements
+        SharedPreferences.OnSharedPreferenceChangeListener {
 
     /**
      * The {@link PagerAdapter} that will provide
@@ -84,34 +87,20 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
     }
 
-
     @Override
     protected void onStart() {
         //load up SharedPref every time user re-enters/restarts app
-        SharedPref sharedPref = new SharedPref(this);
-        if(sharedPref.loadNightModeState()){
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        }
-        else AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String key = getApplicationContext().getResources().getString(R.string.sort_key);
+        onSharedPreferenceChanged(sharedPreferences, key);
         super.onStart();
-
-    }
-
-    @Override
-    protected void onResume() {
-        //load up SharedPref every time user re-enters/restarts app
-        SharedPref sharedPref = new SharedPref(this);
-        if(sharedPref.loadNightModeState()){
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        }
-        else AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        super.onResume();
-
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        PreferenceManager.getDefaultSharedPreferences(this)
+                .unregisterOnSharedPreferenceChangeListener(this);
     }
 
     @Override
@@ -139,6 +128,30 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (key.equals(getString(R.string.sort_key))) {
+            String value = String.valueOf(sharedPreferences.getBoolean(key,
+                    Boolean.parseBoolean(getResources().getString(R.string.dark_theme_default))));
+            switch (value) {
+                case "false": {
+                    AppCompatDelegate
+                            .setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    System.out.println(" SP changed preference to " + value);
+                    break;
+                }
+                case "true": {
+
+                    AppCompatDelegate
+                            .setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    System.out.println(" SP changed preference to " + value);
+                    break;
+                }
+            }
+        }
     }
 
 
