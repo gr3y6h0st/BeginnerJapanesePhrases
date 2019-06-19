@@ -1,10 +1,12 @@
 package com.jaydroid.beginnerleveljapanese.data;
 
 import android.graphics.drawable.Drawable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.io.Serializable;
 
-public class HiraganaData implements Serializable {
+public class HiraganaData implements Parcelable {
     private String hiraganaUnicode;
     private String hiraganaRomajiTranslation;
     private Drawable hiraganaDrawable;
@@ -39,5 +41,15 @@ public class HiraganaData implements Serializable {
 
     public void setHiraganaDrawable(Drawable hiraganaDrawable) {
         this.hiraganaDrawable = hiraganaDrawable;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
     }
 }

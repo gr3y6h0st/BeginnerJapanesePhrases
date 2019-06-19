@@ -5,12 +5,12 @@
 
     <item
         android:id="@+id/menu_search_icon"
-        app:showAsAction="ifRoom"
+        app:showAsAction="always"
         android:title="@string/Translator_Search_Icon"
-        android:icon="@drawable/ic_search_white_24dp"/>
+        android:icon="@drawable/ic_action_translate"/>
 
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
         android:orderInCategory="100"
-        app:showAsAction="never" />
+        app:showAsAction="collapseActionView" />
 </menu>
