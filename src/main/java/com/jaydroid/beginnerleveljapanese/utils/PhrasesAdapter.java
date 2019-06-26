@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jaydroid.beginnerleveljapanese.R;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
@@ -75,7 +76,7 @@ public class PhrasesAdapter extends RecyclerView.Adapter<PhrasesAdapter.PhrasesV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PhrasesViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final PhrasesViewHolder holder, int position) {
         if(data == null) {
             //Log.d(TAG, "data is null");
             return;
@@ -91,26 +92,50 @@ public class PhrasesAdapter extends RecyclerView.Adapter<PhrasesAdapter.PhrasesV
             case "Greetings":
                 //display the images into the holder
                 Picasso.get()
-                        .load(R.drawable.category_greetings)
-                        .noPlaceholder()
-                        .error(R.drawable.ic_sync_black_24dp)
-                        .into(holder.phrasesIv);
+                    .load(R.drawable.category_greetings)
+                    .fetch(new Callback(){
+                        @Override
+                        public void onSuccess() {
+                            Picasso.get()
+                                    .load(R.drawable.category_greetings)
+                                    .placeholder(R.color.colorAccent)
+                                    .error(R.drawable.ic_sync_black_24dp)
+                                    .into(holder.phrasesIv);
+                        }
+                        @Override
+                        public void onError(Exception e) {
+
+                        }
+                    }
+                );
                 break;
 
             case "Common":
             //display the images into the holder
             Picasso.get()
                     .load(R.drawable.category_common)
-                    .noPlaceholder()
-                    .error(R.drawable.ic_sync_black_24dp)
-                    .into(holder.phrasesIv);
+                    .fetch(new Callback() {
+                           @Override
+                           public void onSuccess() {
+                               Picasso.get()
+                                       .load(R.drawable.category_common)
+                                       .placeholder(R.color.colorAccent)
+                                       .error(R.drawable.ic_sync_black_24dp)
+                                       .into(holder.phrasesIv);
+                           }
+
+                           @Override
+                           public void onError(Exception e) {
+
+                           }
+                    });
             break;
 
             case "Numbers":
                 //display the images into the holder
                 Picasso.get()
                         .load(R.drawable.category_numbers)
-                        .noPlaceholder()
+                        .placeholder(R.color.colorAccent)
                         .error(R.drawable.ic_sync_black_24dp)
                         .into(holder.phrasesIv);
                 break;
@@ -119,7 +144,7 @@ public class PhrasesAdapter extends RecyclerView.Adapter<PhrasesAdapter.PhrasesV
                 //display the images into the holder
                 Picasso.get()
                         .load(R.drawable.category_emergency)
-                        .noPlaceholder()
+                        .placeholder(R.color.colorAccent)
                         .error(R.drawable.ic_sync_black_24dp)
                         .into(holder.phrasesIv);
                 break;
@@ -128,7 +153,7 @@ public class PhrasesAdapter extends RecyclerView.Adapter<PhrasesAdapter.PhrasesV
                 //display the images into the holder
                 Picasso.get()
                         .load(R.drawable.category_shopping)
-                        .noPlaceholder()
+                        .placeholder(R.color.colorAccent)
                         .error(R.drawable.ic_sync_black_24dp)
                         .into(holder.phrasesIv);
                 break;
@@ -137,7 +162,7 @@ public class PhrasesAdapter extends RecyclerView.Adapter<PhrasesAdapter.PhrasesV
                 //display the images into the holder
                 Picasso.get()
                         .load(R.drawable.category_eating)
-                        .noPlaceholder()
+                        .placeholder(R.color.colorAccent)
                         .error(R.drawable.ic_sync_black_24dp)
                         .into(holder.phrasesIv);
                 break;
@@ -146,7 +171,7 @@ public class PhrasesAdapter extends RecyclerView.Adapter<PhrasesAdapter.PhrasesV
                 //display the images into the holder
                 Picasso.get()
                         .load(R.drawable.category_accommodation)
-                        .noPlaceholder()
+                        .placeholder(R.color.colorAccent)
                         .error(R.drawable.ic_sync_black_24dp)
                         .into(holder.phrasesIv);
                 break;
@@ -202,7 +227,7 @@ public class PhrasesAdapter extends RecyclerView.Adapter<PhrasesAdapter.PhrasesV
                 Picasso.get()
                         .load(R.drawable.ic_launcher_background)
                         .placeholder(R.color.colorAccent)
-                        .error(R.drawable.ic_launcher_background)
+                        .error(R.drawable.ic_error_alert)
                         .into(holder.phrasesIv);
         }
     }

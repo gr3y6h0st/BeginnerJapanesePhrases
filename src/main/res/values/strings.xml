@@ -7,9 +7,6 @@
 
     <!-- Strings related to Settings -->
     <string name="pref_header_appearance">Appearance</string>
-    <string name="pref_title_display_name">Display name (Coming Soon™)</string>
-    <string name="pref_default_display_name">John Smith</string>
-    <string name="pref_font_size_label">Font Size (Coming Soon™)</string>
 
     <!-- Font Size: Implement in future -->
     <string-array name="pref_font_size_list_titles">
@@ -53,6 +50,8 @@
     <!--Translate Locale Labels-->
     <string name="translation_locale_label_japanese">ja</string>
     <string name="translation_locale_label_english">en</string>
+    <string name="settings_enable_night_mode_card_label">Enable Night Mode</string>
+    <string name="settings_night_mode_switch_label">Night Mode</string>
 
 
 </resources>

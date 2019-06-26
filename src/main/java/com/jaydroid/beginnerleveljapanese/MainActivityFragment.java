@@ -129,13 +129,18 @@ public class MainActivityFragment extends Fragment implements
 
         switch(mCurrentSection){
             case 1:
+                int columnCount = 2;
                 phrase_label_arr = getResources().getStringArray(R.array.phrase_topic_labels);
                 phrasesAdapter = new PhrasesAdapter(getContext(), phrase_label_arr,this);
-                int columnCount = 2;
+
                 phrasesLayoutManager = new StaggeredGridLayoutManager(columnCount, StaggeredGridLayoutManager.VERTICAL);
+                //prevents RecyclerView from calculating gaps between items, causing shifts in the layout.
+                ((StaggeredGridLayoutManager) phrasesLayoutManager).setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
+
                 fragment_main_rv.setLayoutManager(phrasesLayoutManager);
                 fragment_main_rv.setHasFixedSize(true);
                 fragment_main_rv.setAdapter(phrasesAdapter);
+                fragment_main_rv.setItemAnimator(null);
                 break;
 
             case 2:

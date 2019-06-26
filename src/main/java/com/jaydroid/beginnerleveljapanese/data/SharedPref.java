@@ -13,6 +13,7 @@ public class SharedPref {
 
     public void setNightNodeState(Boolean state){
         SharedPreferences.Editor editor = sharedPreferences.edit();
+
         editor.putBoolean("NightMode", state);
         editor.apply();
     }

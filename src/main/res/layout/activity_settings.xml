@@ -21,14 +21,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="Enable Night Mode" />
+                android:text="@string/settings_enable_night_mode_card_label" />
 
             <Switch
                 android:id="@+id/night_mode_switch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="Night Mode"/>
+                android:text="@string/settings_night_mode_switch_label"/>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
