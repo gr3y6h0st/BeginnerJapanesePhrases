@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,7 +25,6 @@ public class PhrasesAdapter extends RecyclerView.Adapter<PhrasesAdapter.PhrasesV
     private String[] data;
     private Context mContext;
     private int mCount;
-    private TypedArray drawable_array;
     final private PhrasesAdapterOnClickListener mOnClickListener;
 
 
@@ -75,160 +75,108 @@ public class PhrasesAdapter extends RecyclerView.Adapter<PhrasesAdapter.PhrasesV
         return new PhrasesViewHolder(view);
     }
 
+    /**
+     * Helper method to display the images into the holder
+     */
+    private void displayPicassoImage(final int imageResDrawable, final PhrasesViewHolder holder){
+        Picasso.get()
+                .load(imageResDrawable)
+                .fetch(new Callback(){
+                           @Override
+                           public void onSuccess() {
+                               Picasso.get()
+                                       .load(imageResDrawable)
+                                       .placeholder(R.color.colorDarkGray)
+                                       .error(R.drawable.ic_sync_black_24dp)
+                                       .into(holder.phrasesIv);
+                           }
+                           @Override
+                           public void onError(Exception e) {
+                               e.printStackTrace();
+                           }
+                       }
+                );
+    }
+
     @Override
     public void onBindViewHolder(@NonNull final PhrasesViewHolder holder, int position) {
         if(data == null) {
             //Log.d(TAG, "data is null");
             return;
         }
-
+        //default image is launcher foreground
+        int imageDrawable = R.drawable.ic_launcher_foreground;
         //gets category title based off position
         String phrase_category_title = data[position];
         //populate each category tv w/ proper title.
         holder.phrasesTv.setText(phrase_category_title);
 
         switch (phrase_category_title){
-
             case "Greetings":
-                //display the images into the holder
-                Picasso.get()
-                    .load(R.drawable.category_greetings)
-                    .fetch(new Callback(){
-                        @Override
-                        public void onSuccess() {
-                            Picasso.get()
-                                    .load(R.drawable.category_greetings)
-                                    .placeholder(R.color.colorAccent)
-                                    .error(R.drawable.ic_sync_black_24dp)
-                                    .into(holder.phrasesIv);
-                        }
-                        @Override
-                        public void onError(Exception e) {
-
-                        }
-                    }
-                );
+                imageDrawable = R.drawable.category_greetings;
+                displayPicassoImage(imageDrawable, holder);
                 break;
 
             case "Common":
-            //display the images into the holder
-            Picasso.get()
-                    .load(R.drawable.category_common)
-                    .fetch(new Callback() {
-                           @Override
-                           public void onSuccess() {
-                               Picasso.get()
-                                       .load(R.drawable.category_common)
-                                       .placeholder(R.color.colorAccent)
-                                       .error(R.drawable.ic_sync_black_24dp)
-                                       .into(holder.phrasesIv);
-                           }
-
-                           @Override
-                           public void onError(Exception e) {
-
-                           }
-                    });
-            break;
+                imageDrawable = R.drawable.category_common;
+                displayPicassoImage(imageDrawable, holder);
+                break;
 
             case "Numbers":
-                //display the images into the holder
-                Picasso.get()
-                        .load(R.drawable.category_numbers)
-                        .placeholder(R.color.colorAccent)
-                        .error(R.drawable.ic_sync_black_24dp)
-                        .into(holder.phrasesIv);
+                imageDrawable = R.drawable.category_numbers;
+                displayPicassoImage(imageDrawable, holder);
                 break;
 
             case"Emergency":
-                //display the images into the holder
-                Picasso.get()
-                        .load(R.drawable.category_emergency)
-                        .placeholder(R.color.colorAccent)
-                        .error(R.drawable.ic_sync_black_24dp)
-                        .into(holder.phrasesIv);
+                imageDrawable = R.drawable.category_emergency;
+                displayPicassoImage(imageDrawable, holder);
                 break;
 
             case "Shopping":
-                //display the images into the holder
-                Picasso.get()
-                        .load(R.drawable.category_shopping)
-                        .placeholder(R.color.colorAccent)
-                        .error(R.drawable.ic_sync_black_24dp)
-                        .into(holder.phrasesIv);
+                imageDrawable = R.drawable.category_shopping;
+                displayPicassoImage(imageDrawable, holder);
                 break;
 
             case "Eating":
-                //display the images into the holder
-                Picasso.get()
-                        .load(R.drawable.category_eating)
-                        .placeholder(R.color.colorAccent)
-                        .error(R.drawable.ic_sync_black_24dp)
-                        .into(holder.phrasesIv);
+                imageDrawable = R.drawable.category_eating;
+                displayPicassoImage(imageDrawable, holder);
                 break;
 
             case "Accommodation":
-                //display the images into the holder
-                Picasso.get()
-                        .load(R.drawable.category_accommodation)
-                        .placeholder(R.color.colorAccent)
-                        .error(R.drawable.ic_sync_black_24dp)
-                        .into(holder.phrasesIv);
+                imageDrawable = R.drawable.category_accommodation;
+                displayPicassoImage(imageDrawable, holder);
                 break;
 
             case "Weather":
-                //display the images into the holder
-                Picasso.get()
-                        .load(R.drawable.category_weather)
-                        .placeholder(R.color.colorAccent)
-                        .error(R.drawable.ic_sync_black_24dp)
-                        .into(holder.phrasesIv);
+                imageDrawable = R.drawable.category_weather;
+                displayPicassoImage(imageDrawable, holder);
                 break;
 
             case "Places":
-                //display the images into the holder
-                Picasso.get()
-                        .load(R.drawable.category_places)
-                        .placeholder(R.color.colorAccent)
-                        .error(R.drawable.ic_sync_black_24dp)
-                        .into(holder.phrasesIv);
+                imageDrawable = R.drawable.category_places;
+                displayPicassoImage(imageDrawable, holder);
+
                 break;
 
             case "Transportation":
-                //display the images into the holder
-                Picasso.get()
-                        .load(R.drawable.category_transportation)
-                        .noPlaceholder()
-                        .error(R.drawable.ic_sync_black_24dp)
-                        .into(holder.phrasesIv);
+                imageDrawable = R.drawable.category_transportation;
+                displayPicassoImage(imageDrawable, holder);
                 break;
 
 
             case "Time":
-                //display the images into the holder
-                Picasso.get()
-                        .load(R.drawable.category_time)
-                        .placeholder(R.color.colorAccent)
-                        .error(R.drawable.ic_launcher_background)
-                        .into(holder.phrasesIv);
+                imageDrawable = R.drawable.category_time;
+                displayPicassoImage(imageDrawable, holder);
                 break;
 
             case "Colors":
-                //display the images into the holder
-                Picasso.get()
-                        .load(R.drawable.category_colors)
-                        .placeholder(R.color.colorAccent)
-                        .error(R.drawable.ic_sync_black_24dp)
-                        .into(holder.phrasesIv);
+                imageDrawable = R.drawable.category_colors;
+                displayPicassoImage(imageDrawable, holder);
                 break;
 
-
             default:
-                Picasso.get()
-                        .load(R.drawable.ic_launcher_background)
-                        .placeholder(R.color.colorAccent)
-                        .error(R.drawable.ic_error_alert)
-                        .into(holder.phrasesIv);
+                displayPicassoImage(imageDrawable, holder);
+                break;
         }
     }
 

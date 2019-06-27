@@ -177,7 +177,7 @@ public class MainActivityFragment extends Fragment implements
                 //Log.i(TAG, "TEST FOR HIRAGANA: " + hiragana_data_arr[0] + hiragana_data_arr[1]);
 
                 hiraganaAdapter = new HiraganaAdapter(getContext(), hiraganaDataArrayList,this);
-                hiraganaLayoutManager = new GridLayoutManager(getActivity().getApplicationContext(),5, LinearLayoutManager.VERTICAL,false);
+                hiraganaLayoutManager = new GridLayoutManager(getActivity().getApplicationContext(),5, RecyclerView.VERTICAL,false);
                 fragment_main_rv.setLayoutManager(hiraganaLayoutManager);
                 fragment_main_rv.setHasFixedSize(true);
                 fragment_main_rv.setAdapter(hiraganaAdapter);

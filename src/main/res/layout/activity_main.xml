@@ -11,7 +11,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
-        android:theme="@style/AppTheme.AppBarOverlay"
+        android:theme="@style/AppTheme.NoActionBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -20,8 +20,6 @@
             app:title="@string/app_name"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:elevation="4dp"
-            app:layout_collapseMode="pin"
             app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
 
         </androidx.appcompat.widget.Toolbar>
@@ -29,23 +27,28 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
+            android:elevation="8dp"
+            android:scrollbarDefaultDelayBeforeFade="@android:integer/config_longAnimTime"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabItem"
+                android:elevation="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tab_text_Phrases" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabItem2"
+                android:elevation="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tab_text_Favorites" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabItem3"
+                android:elevation="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/hiragana_tab_label" />
@@ -56,6 +59,7 @@
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/container"
+        android:elevation="8dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
