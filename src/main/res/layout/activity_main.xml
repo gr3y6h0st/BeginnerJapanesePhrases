@@ -53,13 +53,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/hiragana_tab_label" />
 
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabItem4"
-                android:elevation="8dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/katakana_tab_label" />
-
         </com.google.android.material.tabs.TabLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
