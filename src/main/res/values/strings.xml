@@ -46,6 +46,7 @@
     <string name="english_translate_label">English:</string>
     <string name="japanese_translate_label">Japanese:</string>
     <string name="hiragana_tab_label">Hiragana</string>
+    <string name="katakana_tab_label">Katakana</string>
     <string name="stroke_order_hirgana_content_desc">Stroke Order Hiragana Symbol</string>
     <!--Translate Locale Labels-->
     <string name="translation_locale_label_japanese">ja</string>
