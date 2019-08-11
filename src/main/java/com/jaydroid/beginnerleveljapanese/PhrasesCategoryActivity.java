@@ -70,12 +70,14 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phrases_category);
         ButterKnife.bind(this);
+        favoriteAnimationView.setVisibility(View.GONE);
+
         mCategoryTitle = getIntent().getStringExtra(MainActivityFragment.PHRASE_CATEGORY_SELECTED);
-        String formatted_activity_title = mCategoryTitle + " Phrases";
         mPhrases = getIntent().getStringArrayExtra(MainActivityFragment.PHRASE_STRING_ARRAY);
         mRomaji = getIntent().getStringArrayExtra(MainActivityFragment.PHRASE_ROMAJI_TRANSLATION);
+
+        String formatted_activity_title = mCategoryTitle + " Phrases";
         setTitle(formatted_activity_title);
-        favoriteAnimationView.setVisibility(View.GONE);
 
         if(isDatabaseEmpty(FavoritesContract.FavoriteEntry.TABLE_NAME_FAVORITE_PHRASES)){
             PhraseDataUtils.insertNewPhraseData(this, mCategoryTitle, mPhrases, mRomaji);
@@ -91,6 +93,7 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
         phrases_category_rv.setHasFixedSize(true);
         phrases_category_rv.setAdapter(mPhrasesSelectedAdapter);
     }
+
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int loaderId, @Nullable Bundle args) {
@@ -100,7 +103,8 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
             case ID_PHRASES_SELECTED_LOADER:
                 Uri phrase_query_uri = FavoritesContract.FavoriteEntry.CONTENT_URI;
 
-                return new CursorLoader(getApplicationContext(),
+                return new CursorLoader(
+                        getApplicationContext(),
                         phrase_query_uri,
                         PHRASES_CATEGORY_PROJECTION,
                         FavoritesContract.FavoriteEntry.COLUMN_PHRASE_CATEGORY + " = ? ",
@@ -111,7 +115,8 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
 
                 Uri favoritesQueryUri = FavoritesContract.FavoriteEntry.CONTENT_URI;
 
-                return new CursorLoader(getApplicationContext(),
+                return new CursorLoader(
+                        getApplicationContext(),
                         favoritesQueryUri,
                         PHRASES_CATEGORY_PROJECTION,
                         FavoritesContract.FavoriteEntry.COLUMN_PHRASE_CATEGORY + " = ? ",
@@ -133,7 +138,7 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
 
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-       // Log.v(TAG + " " + loader.getId(), "DESTROYING LOADER.");
+       //Log.v(TAG + " " + loader.getId(), "DESTROYING LOADER.");
         mPhrasesSelectedAdapter.swapCursor(null);
     }
 
@@ -166,7 +171,6 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
         //Save Data
         if(mCursor != null){
             mCursor.moveToFirst();
@@ -175,10 +179,7 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
                 /*Log.i(TAG, "SAVEDINSTANCE LOADING UP FAVORITE ARRAY" + "\n" +
                         mCursor.getString(mCursor.getColumnIndex(FavoritesContract.FavoriteEntry.COLUMN_FAVORITE_BOOL)));*/
             }
-        } else{
-            //Log.i(TAG, "CURSOR MAY BE NULL.");
         }
-
         //Save RV_Adapter Position
         Parcelable mSavedStatePosition = phrases_category_rv.getLayoutManager().onSaveInstanceState();
         outState.putParcelable("recyclerViewPosition", mSavedStatePosition);
@@ -191,19 +192,19 @@ public class PhrasesCategoryActivity extends AppCompatActivity implements
     /**
      * Helper Method that checks to see if the current phrase category is present w/in
      * the local SQLite Db.
-     * @param TableName
+     * @param tableName
      * @return
      */
-    public boolean isDatabaseEmpty(String TableName){
+    public boolean isDatabaseEmpty(String tableName){
         FavoriteDbHelper favoriteDbHelper = new FavoriteDbHelper(getApplicationContext());
 
         SQLiteDatabase database = favoriteDbHelper.getReadableDatabase();
         //check database by CATEGORY.
-        int NoOfRows = (int) DatabaseUtils.queryNumEntries(database,TableName,
+        int numberOfRows = (int) DatabaseUtils.queryNumEntries(database,tableName,
                 FavoritesContract.FavoriteEntry.COLUMN_PHRASE_CATEGORY + " = ? ",
                 new String[]{mCategoryTitle});
 
-        return NoOfRows == 0;
+        return numberOfRows == 0;
     }
 
     @Override

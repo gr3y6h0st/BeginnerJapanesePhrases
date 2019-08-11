@@ -20,7 +20,7 @@ public class BeginnerJapaneseWidgetProvider extends AppWidgetProvider {
 
     private final static String TAG = BeginnerJapaneseWidgetProvider.class.getSimpleName();
     private static String[] romajiArray;
-    private static String[] romaji_eng_translated_Array;
+    private static String[] romajiEngTranslatedArray;
     private static String randomRomajiPhrase;
     private static String randomEngTranslatedRomaji;
 
@@ -83,11 +83,12 @@ public class BeginnerJapaneseWidgetProvider extends AppWidgetProvider {
     void generateRandomPhrase(Context context){
         //populate arrays
         romajiArray = context.getResources().getStringArray(R.array.accommodation_phrases_romaji);
-        romaji_eng_translated_Array = context.getResources().getStringArray(R.array.accommodation_phrases);
+        romajiEngTranslatedArray = context.getResources().getStringArray(R.array.accommodation_phrases);
+
         //pull random phrase from arrays w/ randomly generated int
         int phrase_generator = new Random().nextInt(romajiArray.length);
         randomRomajiPhrase = romajiArray[phrase_generator];
-        randomEngTranslatedRomaji = romaji_eng_translated_Array[phrase_generator];
+        randomEngTranslatedRomaji = romajiEngTranslatedArray[phrase_generator];
 
     }
 }
