@@ -25,7 +25,6 @@ public class Translator {
 
         GoogleCredentials credentials;
 
-
         try {
             credentials = GoogleCredentials.fromStream(context.getAssets().open("beginner-japanese-app-ccd49f50eaa2.json"));
             CredentialsProvider credentialsProvider = FixedCredentialsProvider.create(credentials);
@@ -44,12 +43,8 @@ public class Translator {
                             .setTargetLanguageCode(targetLanguageCode)
                             .addContents(text)
                             .build();
-
-
             // Call the API
             TranslateTextResponse response = translationServiceClient.translateText(translateTextRequest);
-            /*System.out.format(
-                    "Translated Text: %s", response.getTranslationsList().get(0).getTranslatedText());*/
             return response.getTranslationsList().get(0).getTranslatedText();
 
         } catch (Exception e) {
