@@ -7,9 +7,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
-import com.jaydroid.beginnerleveljapanese.MainActivity;
+import com.jaydroid.beginnerleveljapanese.activities.MainActivity;
 import com.jaydroid.beginnerleveljapanese.R;
-import com.jaydroid.beginnerleveljapanese.TranslateResultsActivity;
+import com.jaydroid.beginnerleveljapanese.activities.TranslateResultsActivity;
 
 import java.util.Random;
 

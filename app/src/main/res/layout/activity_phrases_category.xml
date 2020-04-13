@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:fitsSystemWindows="true"
-    tools:context="com.jaydroid.beginnerleveljapanese.PhrasesCategoryActivity">
+    tools:context="com.jaydroid.beginnerleveljapanese.activities.PhrasesCategoryActivity">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/favorite_animation_view"

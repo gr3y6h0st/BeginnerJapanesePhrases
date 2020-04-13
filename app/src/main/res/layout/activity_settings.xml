@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:padding="24dp"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.jaydroid.beginnerleveljapanese.SettingsActivity">
+    tools:context="com.jaydroid.beginnerleveljapanese.activities.SettingsActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

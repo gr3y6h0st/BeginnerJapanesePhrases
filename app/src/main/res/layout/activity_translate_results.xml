@@ -5,7 +5,7 @@
     android:theme="@style/AppTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.jaydroid.beginnerleveljapanese.TranslateResultsActivity">
+    tools:context="com.jaydroid.beginnerleveljapanese.activities.TranslateResultsActivity">
 
     <TextView
         android:id="@+id/translate_orig_lang_label2"

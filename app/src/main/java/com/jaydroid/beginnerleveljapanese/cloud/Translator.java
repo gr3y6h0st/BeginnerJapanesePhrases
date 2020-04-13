@@ -7,30 +7,31 @@ import android.content.Context;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.FixedCredentialsProvider;
 import com.google.auth.oauth2.GoogleCredentials;
-import com.google.cloud.translate.Translate;
-import com.google.cloud.translate.Translate.TranslateOption;
-import com.google.cloud.translate.TranslateOptions;
-import com.google.cloud.translate.Translation;
 import com.google.cloud.translate.v3beta1.LocationName;
 import com.google.cloud.translate.v3beta1.TranslateTextRequest;
 import com.google.cloud.translate.v3beta1.TranslateTextResponse;
 import com.google.cloud.translate.v3beta1.TranslationServiceClient;
 import com.google.cloud.translate.v3beta1.TranslationServiceSettings;
 
-import java.io.IOException;
-
 
 public class Translator {
-    public static String translateText(Context context, String projectId, String location, String text, String sourceLanguageCode, String targetLanguageCode) {
+    public static String translateText(Context context, String projectId, String location,
+                                       String text, String sourceLanguageCode,
+                                       String targetLanguageCode)
+    {
 
         GoogleCredentials credentials;
 
-        try {
+        try
+        {
             credentials = GoogleCredentials.fromStream(context.getAssets().open("beginner-japanese-app-ccd49f50eaa2.json"));
             CredentialsProvider credentialsProvider = FixedCredentialsProvider.create(credentials);
 
-            TranslationServiceSettings translationServiceSettings = TranslationServiceSettings.newBuilder().setCredentialsProvider(credentialsProvider).build();
-            TranslationServiceClient translationServiceClient = TranslationServiceClient.create(translationServiceSettings);
+            TranslationServiceSettings translationServiceSettings =
+                    TranslationServiceSettings.newBuilder().setCredentialsProvider(credentialsProvider).build();
+
+            TranslationServiceClient translationServiceClient =
+                    TranslationServiceClient.create(translationServiceSettings);
 
             LocationName locationName =
                     LocationName.newBuilder().setProject(projectId).setLocation(location).build();
@@ -47,7 +48,8 @@ public class Translator {
             TranslateTextResponse response = translationServiceClient.translateText(translateTextRequest);
             return response.getTranslationsList().get(0).getTranslatedText();
 
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             throw new RuntimeException("Couldn't create client.", e);
         }
     }

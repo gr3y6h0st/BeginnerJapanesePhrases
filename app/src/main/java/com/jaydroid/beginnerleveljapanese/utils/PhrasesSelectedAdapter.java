@@ -14,7 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.jaydroid.beginnerleveljapanese.PhrasesCategoryActivity;
+import com.jaydroid.beginnerleveljapanese.activities.PhrasesCategoryActivity;
 import com.jaydroid.beginnerleveljapanese.R;
 import com.jaydroid.beginnerleveljapanese.data.FavoriteDbHelper;
 import com.jaydroid.beginnerleveljapanese.data.FavoritesContract;
