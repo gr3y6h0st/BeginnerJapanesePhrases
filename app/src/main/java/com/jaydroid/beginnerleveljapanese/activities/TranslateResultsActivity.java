@@ -26,6 +26,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.jaydroid.beginnerleveljapanese.activities.MainActivity.ID_TRANSLATOR_LOADER;
+import static com.jaydroid.beginnerleveljapanese.cloud.CloudTranslator.translate;
 import static com.jaydroid.beginnerleveljapanese.cloud.Translator.translateText;
 
 public class TranslateResultsActivity extends AppCompatActivity
@@ -118,20 +119,20 @@ public class TranslateResultsActivity extends AppCompatActivity
                 String translateStart = args.getString("textToTranslate");
                 try{
                     //where background thread runs Translator translate() method.
-                    return translateText(getApplicationContext(), "beginner-japanese-app",
+                    /*return translateText(getApplicationContext(), "beginner-japanese-app",
                             "global",
                             translateStart,
                             args.getString("sourceLocale"),
                             args.getString("targetLocale")
-                    );
-                   /*return translate(
+                    );*/
+                   return translate(
                            getApplicationContext(),
                            "beginner-japanese-app",
                            "global",
                            translateStart,
                            args.getString("sourceLocale"),
                            args.getString("targetLocale")
-                           );*/
+                           );
 
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -9,12 +9,13 @@ import com.google.cloud.translate.v3beta1.TranslationServiceClient
 import com.google.cloud.translate.v3beta1.TranslationServiceSettings
 import com.google.auth.oauth2.GoogleCredentials as GoogleCredentials
 
-class CloudTranslator {
+object CloudTranslator {
+    @JvmStatic
     fun translate(context: Context?, projectId: String?, location: String?,
                       text: String?, sourceLanguageCode: String?,
                       targetLanguageCode: String?): String?
     {
-        var credentials: Any
+        var credentials: GoogleCredentials
 
                 try {
                     credentials = GoogleCredentials.fromStream(context!!.assets.open("beginner-japanese-app-ccd49f50eaa2.json"))
