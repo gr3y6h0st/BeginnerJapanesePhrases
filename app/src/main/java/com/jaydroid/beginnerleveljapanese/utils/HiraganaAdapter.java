@@ -117,9 +117,6 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
             @Override
             public void onClick(View view) {
                 switch (hiragana_syllabary_romaji_translation){
-                    case "a":
-                        playAudio(R.raw.a);
-                        break;
 
                     case "i":
                         playAudio(R.raw.i);
@@ -401,6 +398,7 @@ public class HiraganaAdapter extends RecyclerView.Adapter<HiraganaAdapter.Hiraga
                     case "po":
                         playAudio(R.raw.po);
                         break;
+                    case "a":
 
                     default:
                         playAudio(R.raw.a);

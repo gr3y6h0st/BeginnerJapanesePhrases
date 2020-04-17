@@ -17,7 +17,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <meta-data
             android:name="android.app.default_searchable"
-            android:value=".TranslateResultsActivity" />
+            android:value="com.jaydroid.beginnerleveljapanese.activities.TranslateResultsActivity" />
 
         <activity
             android:name="com.jaydroid.beginnerleveljapanese.activities.MainActivity"
